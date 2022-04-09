@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using scorepager_desktop.Structures;
 using scorepager_desktop.Classes;
+using scorepager_desktop.UserControls;
 
 namespace scorepager_desktop {
 	public partial class MainForm : Form {
@@ -30,6 +31,8 @@ namespace scorepager_desktop {
 
 		private bool canPaint = false;
 		private bool isTyping = false;
+
+		SymbolSelector symbolSelectorUC;
 		public MainForm() {
 			InitializeComponent();
 
@@ -49,6 +52,10 @@ namespace scorepager_desktop {
 			else Environment.Exit(0);
 
 			SetCurrentPageAndLayer(1);
+
+			symbolSelectorUC = new SymbolSelector(toolBarPanel.Size);
+			toolBarPanel.Controls.Add(symbolSelectorUC);
+			symbolSelectorUC.ResizeControl(toolBarPanel.Size);
 		}
 
 		private void SetCurrentPageAndLayer(int pageNumber) {
@@ -273,6 +280,11 @@ namespace scorepager_desktop {
 		private void nextPageButton_Click(object sender, EventArgs e) {
 			if (currentPageNumber + 1 > file.PageCount) return;
 			SetCurrentPageAndLayer(++currentPageNumber);
+		}
+
+		private void toolBarPanel_Resize(object sender, EventArgs e) {
+			//
+			symbolSelectorUC.ResizeControl(toolBarPanel.Size);
 		}
 	}
 }

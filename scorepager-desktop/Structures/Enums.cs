@@ -1,5 +1,5 @@
 ﻿namespace scorepager_desktop.Structures {
-	enum DrawType {
+	public enum DrawType {
 		PEN,
 		HIGHLIGHTER,
 		TEXT,
@@ -7,13 +7,13 @@
 		ERASER
 	}
 
-	enum SymbolType {
+	public enum SymbolType {
 		NONE,
 		VIOLIN_KEY,
-		VALAMI
+		SHARP
 	}
 
-	enum LayerOwner {
+	public enum LayerOwner {
 		USER,
 		OTHER
 	}
