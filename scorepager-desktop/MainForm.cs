@@ -9,8 +9,6 @@ using scorepager_desktop.UserControls;
 
 namespace scorepager_desktop {
 	public partial class MainForm : Form {
-		private const int ICON_SIZE = 50;
-
 		private PDFFile file;
 		private Page currentPage;
 		private int currentPageNumber = 0;
@@ -32,7 +30,11 @@ namespace scorepager_desktop {
 		private bool canPaint = false;
 		private bool isTyping = false;
 
-		SymbolSelector symbolSelectorUC;
+		#region UserControls
+		List<MasterUserControl> userControls = new List<MasterUserControl>() {
+			new SymbolSelector(),
+		};
+		#endregion
 		public MainForm() {
 			InitializeComponent();
 
@@ -52,10 +54,6 @@ namespace scorepager_desktop {
 			else Environment.Exit(0);
 
 			SetCurrentPageAndLayer(1);
-
-			symbolSelectorUC = new SymbolSelector(toolBarPanel.Size);
-			toolBarPanel.Controls.Add(symbolSelectorUC);
-			symbolSelectorUC.ResizeControl(toolBarPanel.Size);
 		}
 
 		private void SetCurrentPageAndLayer(int pageNumber) {
@@ -86,11 +84,10 @@ namespace scorepager_desktop {
 			Bitmap tmp = new Bitmap(background.Width, background.Height);
 			for (int i = 0; i < background.Width; i++) {
 				for (int j = 0; j < background.Height; j++) {
-					if (foreground.GetPixel(i, j).A != 0) {
+					if (foreground.GetPixel(i, j).A != 0)
 						tmp.SetPixel(i, j, foreground.GetPixel(i, j));
-					} else {
+					else
 						tmp.SetPixel(i, j, background.GetPixel(i, j));
-					}
 				}
 			}
 			canvasPictureBox.Image = background;
@@ -103,29 +100,31 @@ namespace scorepager_desktop {
 					InsertStringToCanvas(textBoxCanvasText.Text);
 					SetBufferImage(canvasPictureBox.Image);
 					isTyping = true;
-
 				} else {
 					textBoxCanvasText.Focus();
 					isTyping = true;
 				}
 				textPoint = e.Location;
 			} else if (drawType == DrawType.SYMBOL) {
-				/*SymbolSelector si = new SymbolSelector();
-				si.ShowDialog();
-				SymbolType st = si.Symbol;
-				si.Dispose();
-				Bitmap img = null;
-				switch (st) {
+				Image img = null;
+				switch (((SymbolSelector)userControls[0]).Type) {
 					case SymbolType.NONE:
 						return;
 					case SymbolType.VIOLIN_KEY:
-						//img = ResizeImage(Properties.Resources.violin_key_icon);
+						img = ResizeImage(Properties.Resources.icon_violin);
 						break;
-					case SymbolType.VALAMI:
+					case SymbolType.SHARP:
+						img = ResizeImage(Properties.Resources.icon_sharp);
 						break;
 				}
-				graphics.DrawImage((Image)RecolorBitmap(img, color), e.Location);
-				canvasPictureBox.Refresh();*/
+				graphics.DrawImage(
+					RecolorBitmap((Bitmap)img, color),
+					new Point(
+						e.Location.X - (int)widthNumericUpDown.Value / 2,
+						e.Location.Y - (int)widthNumericUpDown.Value / 2
+					)
+				);
+				canvasPictureBox.Refresh();
 			} else {
 				currentPoints.Clear();
 				canPaint = true;
@@ -139,9 +138,8 @@ namespace scorepager_desktop {
 				currentPoints.Add(e.Location);
 				pointSet.End = e.Location;
 				path.AddLine(pointSet.Start, pointSet.End);
-				if (drawType != DrawType.ERASER) {
-					graphics.DrawPath(pen, path);
-				} else {
+				if (drawType != DrawType.ERASER) graphics.DrawPath(pen, path);
+				else {
 					SolidBrush erasesb = new SolidBrush(Color.FromArgb(0, Color.Red));
 					Pen erasep = new Pen(erasesb, Convert.ToInt32(widthNumericUpDown.Value));
 					graphics.DrawPath(erasep, path);
@@ -179,26 +177,31 @@ namespace scorepager_desktop {
 		private void penSelectButton_Click(object sender, EventArgs e) {
 			drawType = DrawType.PEN;
 			graphics.CompositingMode = CompositingMode.SourceOver;
+			LoadUCToToolbarPanel();
 		}
 
 		private void textSelectButton_Click(object sender, EventArgs e) {
 			drawType = DrawType.TEXT;
 			graphics.CompositingMode = CompositingMode.SourceOver;
+			LoadUCToToolbarPanel();
 		}
 
 		private void eraserSelectButton_Click(object sender, EventArgs e) {
 			drawType = DrawType.ERASER;
 			graphics.CompositingMode = CompositingMode.SourceCopy;
+			LoadUCToToolbarPanel();
 		}
 
 		private void highLighterSelectButton_Click(object sender, EventArgs e) {
 			drawType = DrawType.HIGHLIGHTER;
 			graphics.CompositingMode = CompositingMode.SourceOver;
+			LoadUCToToolbarPanel();
 		}
 
 		private void symbolSelectButton_Click(object sender, EventArgs e) {
 			drawType = DrawType.SYMBOL;
 			graphics.CompositingMode = CompositingMode.SourceOver;
+			LoadUCToToolbarPanel();
 		}
 
 		private void opacityTrackBar_ValueChanged(object sender, EventArgs e) {
@@ -232,7 +235,7 @@ namespace scorepager_desktop {
 		}
 
 		private Image ResizeImage(Image imgToResize) {
-			return (Image) new Bitmap(imgToResize, new Size(ICON_SIZE, ICON_SIZE));
+			return (Image) new Bitmap(imgToResize, new Size((int)widthNumericUpDown.Value, (int)widthNumericUpDown.Value));
 		}
 
 		private Bitmap RecolorBitmap(Bitmap img, Color color) {
@@ -283,8 +286,30 @@ namespace scorepager_desktop {
 		}
 
 		private void toolBarPanel_Resize(object sender, EventArgs e) {
-			//
-			symbolSelectorUC.ResizeControl(toolBarPanel.Size);
+			userControls.ForEach(control => { if (control.IsActive) control.ResizeControl(toolBarPanel.Size); });
+		}
+
+		private void LoadUCToToolbarPanel() {
+			userControls.ForEach(control => control.SetActive(false));
+			toolBarPanel.Controls.Clear();
+			int index = -1;
+			switch (drawType) {
+				case DrawType.PEN:
+					break;
+				case DrawType.HIGHLIGHTER:
+					break;
+				case DrawType.TEXT:
+					break;
+				case DrawType.SYMBOL:
+					index = 0;
+					break;
+				case DrawType.ERASER:
+					break;
+			}
+			if (index == -1) return;
+			userControls[index].SetActive(true);
+			userControls[index].ResizeControl(toolBarPanel.Size);
+			toolBarPanel.Controls.Add(userControls[index]);
 		}
 	}
 }
