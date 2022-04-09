@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Layer.cs" />
+    <Compile Include="Classes\Page.cs" />
+    <Compile Include="Classes\PDFFile.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,7 +85,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Classes\" />
     <Folder Include="Resources\Icons\" />
     <Folder Include="Resources\Images\" />
   </ItemGroup>

@@ -12,4 +12,9 @@
 		VIOLIN_KEY,
 		VALAMI
 	}
+
+	enum LayerOwner {
+		USER,
+		OTHER
+	}
 }

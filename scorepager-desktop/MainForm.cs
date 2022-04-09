@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using scorepager_desktop.Structures;
+using scorepager_desktop.Classes;
 
 namespace scorepager_desktop {
 	public partial class MainForm : Form {
@@ -26,6 +27,8 @@ namespace scorepager_desktop {
 
 		TextBox textBoxCanvasText;
 
+		PDFFile file = new PDFFile(new List<Page>() { new Page(null, 0, new List<Layer>() { new Layer(null, LayerOwner.USER) }) }, 0);
+
 		public MainForm() {
 			InitializeComponent();
 
@@ -34,6 +37,11 @@ namespace scorepager_desktop {
 			textBoxCanvasText.GotFocus += OnFocus;
 			textBoxCanvasText.LostFocus += OnDefocus;
 			textBoxCanvasText.Size = new Size(0, 0);
+			textBoxCanvasText.Location = new Point(0, 0);
+
+			textBoxCanvasText.TextChanged += textBoxCanvasText_TextChanged;
+
+			this.Controls.Add(textBoxCanvasText);
 
 			sb = new SolidBrush(color);
 			p = new Pen(sb, Convert.ToInt32(widthNumericUpDown.Value));
@@ -52,11 +60,7 @@ namespace scorepager_desktop {
 			path = new GraphicsPath();
 			graphics.CompositingMode = CompositingMode.SourceOver;
 
-			/*PaintCanvas pc = new PaintCanvas(0, 150, 200);
-			pc.AddPicture(@"D:\Temp\red.png");
-			pc.AddPicture(@"D:\Temp\green.png");
-			mainTableLayoutPanel.Controls.Container.Controls.Add(pc);*/
-			//MessageBox.Show(mainTableLayoutPanel.Controls.Container.Controls[1].Name);
+			
 		}
 
 		private void MergeImages(Bitmap background, Bitmap foreground) {
@@ -71,7 +75,6 @@ namespace scorepager_desktop {
 				}
 			}
 			//return tmp;
-
 			canvasPictureBox.Image = background;
 
 		}
@@ -104,7 +107,7 @@ namespace scorepager_desktop {
 					case SymbolType.VALAMI:
 						break;
 				}
-				graphics.DrawImage(RecolorImage(img), e.Location);
+				graphics.DrawImage((Image)RecolorBitmap(img, color), e.Location);
 				canvasPictureBox.Refresh();*/
 			} else {
 				currentPoints.Clear();
@@ -188,16 +191,15 @@ namespace scorepager_desktop {
 		private void SetGlobalColor(Color _color) {
 			color = Color.FromArgb(opacityTrackBar.Value, _color);
 			colorPreviewPanel.BackColor = color;
-			sb = new SolidBrush(color);
-			p = new Pen(sb, Convert.ToInt32(widthNumericUpDown.Value));
+			//sb = new SolidBrush(color);
+			sb.Color = color;
+			//p = new Pen(sb, Convert.ToInt32(widthNumericUpDown.Value));
+			p.Brush = sb;
+			p.Width = Convert.ToInt32(widthNumericUpDown.Value);
 		}
 
 		private void SetGlobalColorOpacity() {
 			SetGlobalColor(color);
-		}
-
-		private void SetPenWidth() {
-			p = new Pen(sb, Convert.ToInt32(widthNumericUpDown.Value));
 		}
 
 		private void canvasPictureBox_Paint(object sender, PaintEventArgs e) {
@@ -205,7 +207,7 @@ namespace scorepager_desktop {
 		}
 
 		private void widthNumericUpDown_ValueChanged(object sender, EventArgs e) {
-			SetPenWidth();
+			p.Width = Convert.ToInt32(widthNumericUpDown.Value);
 		}
 
 		private void colorPreviewPanel_MouseClick(object sender, MouseEventArgs e) {
@@ -214,16 +216,16 @@ namespace scorepager_desktop {
 			if (cd.ShowDialog() == DialogResult.OK) SetGlobalColor(cd.Color);
 		}
 
-		private Bitmap ResizeImage(Image imgToResize) {
-			return new Bitmap(imgToResize, new Size(ICON_SIZE, ICON_SIZE));
+		private Image ResizeImage(Image imgToResize) {
+			return (Image) new Bitmap(imgToResize, new Size(ICON_SIZE, ICON_SIZE));
 		}
 
-		private Image RecolorImage(Bitmap img) {
+		private Bitmap RecolorBitmap(Bitmap img, Color color) {
 			for (int i = 0; i < img.Width; i++)
 				for (int j = 0; j < img.Height; j++)
 					if (img.GetPixel(i, j).A != 0)
 						img.SetPixel(i, j, color);
-			return (Image)img;
+			return img;
 		}
 
 		private void button1_Click(object sender, EventArgs e) {

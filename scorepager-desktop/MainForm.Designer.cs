@@ -218,13 +218,13 @@ namespace scorepager_desktop {
 			this.opacityTrackBar.LargeChange = 20;
 			this.opacityTrackBar.Location = new System.Drawing.Point(1, 38);
 			this.opacityTrackBar.Margin = new System.Windows.Forms.Padding(1);
-			this.opacityTrackBar.Maximum = 100;
+			this.opacityTrackBar.Maximum = 255;
 			this.opacityTrackBar.Name = "opacityTrackBar";
 			this.opacityTrackBar.Size = new System.Drawing.Size(95, 35);
 			this.opacityTrackBar.SmallChange = 5;
 			this.opacityTrackBar.TabIndex = 0;
-			this.opacityTrackBar.TickFrequency = 5;
-			this.opacityTrackBar.Value = 100;
+			this.opacityTrackBar.TickFrequency = 15;
+			this.opacityTrackBar.Value = 255;
 			this.opacityTrackBar.ValueChanged += new System.EventHandler(this.opacityTrackBar_ValueChanged);
 			// 
 			// widthNumericUpDown
@@ -255,6 +255,7 @@ namespace scorepager_desktop {
 			this.colorPreviewPanel.Name = "colorPreviewPanel";
 			this.colorPreviewPanel.Size = new System.Drawing.Size(77, 54);
 			this.colorPreviewPanel.TabIndex = 1;
+			this.colorPreviewPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.colorPreviewPanel_MouseClick);
 			// 
 			// mainControlTableLayoutPanel
 			// 
