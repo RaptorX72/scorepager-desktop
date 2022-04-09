@@ -8,59 +8,71 @@ using scorepager_desktop.Classes;
 
 namespace scorepager_desktop {
 	public partial class MainForm : Form {
-		Bitmap backgroundImage;
-		Bitmap bm;
-		Graphics graphics;
-		Image bufferImage;
-		PointSet pointSet;
-		GraphicsPath path;
-		bool canPaint = false;
-		bool isTyping = false;
-		const int ICON_SIZE = 50;
-		DrawType drawType = DrawType.PEN;
-		Color color = Color.Black;
-		Pen p;
-		SolidBrush sb;
-		List<Point> currentPoints = new List<Point>();
-		PictureBox pb = new PictureBox();
-		Point textPoint;
+		private const int ICON_SIZE = 50;
 
-		TextBox textBoxCanvasText;
+		private PDFFile file;
+		private Page currentPage;
+		private int currentPageNumber = 0;
 
-		PDFFile file = new PDFFile(new List<Page>() { new Page(null, 0, new List<Layer>() { new Layer(null, LayerOwner.USER) }) }, 0);
+		private Bitmap bm;
+		private Image bufferImage;
+		private Graphics graphics;
+		private GraphicsPath path = new GraphicsPath();
+		private TextBox textBoxCanvasText;
+		private Point textPoint;
+		private PointSet pointSet;
+		private List<Point> currentPoints = new List<Point>();
 
+		private Pen pen;
+		private SolidBrush solidBrush;
+		private DrawType drawType = DrawType.PEN;
+		private Color color = Color.Black;
+
+		private bool canPaint = false;
+		private bool isTyping = false;
 		public MainForm() {
 			InitializeComponent();
 
 			textBoxCanvasText = new TextBox();
-
 			textBoxCanvasText.GotFocus += OnFocus;
 			textBoxCanvasText.LostFocus += OnDefocus;
 			textBoxCanvasText.Size = new Size(0, 0);
 			textBoxCanvasText.Location = new Point(0, 0);
-
 			textBoxCanvasText.TextChanged += textBoxCanvasText_TextChanged;
-
 			this.Controls.Add(textBoxCanvasText);
 
-			sb = new SolidBrush(color);
-			p = new Pen(sb, Convert.ToInt32(widthNumericUpDown.Value));
+			solidBrush = new SolidBrush(color);
+			pen = new Pen(solidBrush, Convert.ToInt32(widthNumericUpDown.Value));
 
 			OpenFileDialog ofd = new OpenFileDialog();
-			if (ofd.ShowDialog() == DialogResult.OK) {
-				backgroundImage = (Bitmap)Bitmap.FromFile(ofd.FileName);
-				canvasPictureBox.BackgroundImage = backgroundImage;
-				canvasPictureBox.Size = new Size(backgroundImage.Width, backgroundImage.Height);
-			} else Environment.Exit(0);
+			if (ofd.ShowDialog() == DialogResult.OK) file = new PDFFile(ofd.FileName);
+			else Environment.Exit(0);
 
-			bm = new Bitmap(backgroundImage.Width, backgroundImage.Height);
-			graphics = Graphics.FromImage(bm);
-			graphics.Clear(Color.Transparent);
-			canvasPictureBox.Image = bm;
-			path = new GraphicsPath();
+			SetCurrentPageAndLayer(1);
+		}
+
+		private void SetCurrentPageAndLayer(int pageNumber) {
+			if (bm != null) currentPage.SetUserLayer(bm);
+			currentPage = file.GetPageByPageNumber(pageNumber);
+			currentPageNumber = pageNumber;
+			canvasPictureBox.BackgroundImage = currentPage.Bitmap;
+			canvasPictureBox.Size = new Size(currentPage.Bitmap.Width, currentPage.Bitmap.Height);
+			if (currentPage.GetUserLayer() != null) {
+				bm = currentPage.GetUserLayer();
+				graphics = Graphics.FromImage(bm);
+				canvasPictureBox.Image = bm;
+			} else {
+				bm = new Bitmap(currentPage.Bitmap.Width, currentPage.Bitmap.Height);
+				graphics = Graphics.FromImage(bm);
+				graphics.Clear(Color.Transparent);
+				canvasPictureBox.Image = bm;
+			}
 			graphics.CompositingMode = CompositingMode.SourceOver;
+			UpdatePageCounterLabel();
+		}
 
-			
+		private void UpdatePageCounterLabel() {
+			labelPageCount.Text = $"{currentPageNumber} / {file.PageCount}";
 		}
 
 		private void MergeImages(Bitmap background, Bitmap foreground) {
@@ -74,9 +86,7 @@ namespace scorepager_desktop {
 					}
 				}
 			}
-			//return tmp;
 			canvasPictureBox.Image = background;
-
 		}
 
 		private void canvasPictureBox_MouseDown(object sender, MouseEventArgs e) {
@@ -123,7 +133,7 @@ namespace scorepager_desktop {
 				pointSet.End = e.Location;
 				path.AddLine(pointSet.Start, pointSet.End);
 				if (drawType != DrawType.ERASER) {
-					graphics.DrawPath(p, path);
+					graphics.DrawPath(pen, path);
 				} else {
 					SolidBrush erasesb = new SolidBrush(Color.FromArgb(0, Color.Red));
 					Pen erasep = new Pen(erasesb, Convert.ToInt32(widthNumericUpDown.Value));
@@ -146,11 +156,11 @@ namespace scorepager_desktop {
 						Pen erasep = new Pen(erasesb, Convert.ToInt32(widthNumericUpDown.Value));
 						graphics.DrawLines(erasep, currentPoints.ToArray());
 					} else {
-						p.MiterLimit = p.MiterLimit / 4;
-						p.LineJoin = LineJoin.Round;
-						p.StartCap = LineCap.Round;
-						p.EndCap = LineCap.Round;
-						graphics.DrawLines(p, currentPoints.ToArray());
+						pen.MiterLimit = pen.MiterLimit / 4;
+						pen.LineJoin = LineJoin.Round;
+						pen.StartCap = LineCap.Round;
+						pen.EndCap = LineCap.Round;
+						graphics.DrawLines(pen, currentPoints.ToArray());
 					}
 				}
 				path.Reset();
@@ -191,11 +201,9 @@ namespace scorepager_desktop {
 		private void SetGlobalColor(Color _color) {
 			color = Color.FromArgb(opacityTrackBar.Value, _color);
 			colorPreviewPanel.BackColor = color;
-			//sb = new SolidBrush(color);
-			sb.Color = color;
-			//p = new Pen(sb, Convert.ToInt32(widthNumericUpDown.Value));
-			p.Brush = sb;
-			p.Width = Convert.ToInt32(widthNumericUpDown.Value);
+			solidBrush.Color = color;
+			pen.Brush = solidBrush;
+			pen.Width = Convert.ToInt32(widthNumericUpDown.Value);
 		}
 
 		private void SetGlobalColorOpacity() {
@@ -207,7 +215,7 @@ namespace scorepager_desktop {
 		}
 
 		private void widthNumericUpDown_ValueChanged(object sender, EventArgs e) {
-			p.Width = Convert.ToInt32(widthNumericUpDown.Value);
+			pen.Width = Convert.ToInt32(widthNumericUpDown.Value);
 		}
 
 		private void colorPreviewPanel_MouseClick(object sender, MouseEventArgs e) {
@@ -227,18 +235,6 @@ namespace scorepager_desktop {
 						img.SetPixel(i, j, color);
 			return img;
 		}
-
-		private void button1_Click(object sender, EventArgs e) {
-			OpenFileDialog ofd = new OpenFileDialog();
-			if (ofd.ShowDialog() == DialogResult.OK) {
-				backgroundImage = (Bitmap)Bitmap.FromFile(ofd.FileName);
-				graphics = Graphics.FromImage(backgroundImage);
-				canvasPictureBox.Image = backgroundImage;
-				pb.Image = backgroundImage;
-			}
-		}
-
-
 
 		private void OnFocus(object sender = null, EventArgs e = null) {
 			SetBufferImage(canvasPictureBox.Image);
@@ -260,13 +256,23 @@ namespace scorepager_desktop {
 		private void DrawStringToCanvas(string text) {
 			graphics.Clear(Color.Transparent);
 			graphics.DrawImage(bufferImage, 0, 0);
-			graphics.DrawString(text, new Font(new FontFamily("Calibri"), 16f), sb, textPoint);
+			graphics.DrawString(text, new Font(new FontFamily("Calibri"), 16f), solidBrush, textPoint);
 			canvasPictureBox.Refresh();
 		}
 
 		private void InsertStringToCanvas(string text) {
 			DrawStringToCanvas(text);
 			textBoxCanvasText.Text = "";
+		}
+
+		private void PreviousPageButton_Click(object sender, EventArgs e) {
+			if (currentPageNumber - 1 == 0) return;
+			SetCurrentPageAndLayer(--currentPageNumber);
+		}
+
+		private void nextPageButton_Click(object sender, EventArgs e) {
+			if (currentPageNumber + 1 > file.PageCount) return;
+			SetCurrentPageAndLayer(++currentPageNumber);
 		}
 	}
 }

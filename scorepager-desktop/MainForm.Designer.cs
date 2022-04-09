@@ -25,40 +25,43 @@ namespace scorepager_desktop {
 		/// </summary>
 		private void InitializeComponent() {
 			this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-			this.toolBarTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.symbolSelectButton = new System.Windows.Forms.Button();
-			this.highLighterSelectButton = new System.Windows.Forms.Button();
-			this.eraserSelectButton = new System.Windows.Forms.Button();
-			this.textSelectButton = new System.Windows.Forms.Button();
-			this.penSelectButton = new System.Windows.Forms.Button();
-			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-			this.opacityTrackBar = new System.Windows.Forms.TrackBar();
-			this.widthNumericUpDown = new System.Windows.Forms.NumericUpDown();
-			this.colorPreviewPanel = new System.Windows.Forms.Panel();
 			this.mainControlTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
 			this.nextPageButton = new System.Windows.Forms.Button();
 			this.PreviousPageButton = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
 			this.canvasPictureBox = new System.Windows.Forms.PictureBox();
+			this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+			this.label1 = new System.Windows.Forms.Label();
+			this.labelPageCount = new System.Windows.Forms.Label();
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.colorPreviewPanel = new System.Windows.Forms.Panel();
+			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.widthNumericUpDown = new System.Windows.Forms.NumericUpDown();
+			this.opacityTrackBar = new System.Windows.Forms.TrackBar();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.penSelectButton = new System.Windows.Forms.Button();
+			this.textSelectButton = new System.Windows.Forms.Button();
+			this.eraserSelectButton = new System.Windows.Forms.Button();
+			this.highLighterSelectButton = new System.Windows.Forms.Button();
+			this.symbolSelectButton = new System.Windows.Forms.Button();
+			this.toolBarTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.mainTableLayoutPanel.SuspendLayout();
-			this.toolBarTableLayoutPanel.SuspendLayout();
-			this.tableLayoutPanel1.SuspendLayout();
-			this.tableLayoutPanel2.SuspendLayout();
-			this.tableLayoutPanel3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.opacityTrackBar)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.widthNumericUpDown)).BeginInit();
 			this.mainControlTableLayoutPanel.SuspendLayout();
 			this.tableLayoutPanel4.SuspendLayout();
 			this.tableLayoutPanel5.SuspendLayout();
 			this.tableLayoutPanel6.SuspendLayout();
 			this.tableLayoutPanel7.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).BeginInit();
+			this.tableLayoutPanel8.SuspendLayout();
+			this.tableLayoutPanel2.SuspendLayout();
+			this.tableLayoutPanel3.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.widthNumericUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.opacityTrackBar)).BeginInit();
+			this.tableLayoutPanel1.SuspendLayout();
+			this.toolBarTableLayoutPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// mainTableLayoutPanel
@@ -71,191 +74,11 @@ namespace scorepager_desktop {
 			this.mainTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.mainTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
 			this.mainTableLayoutPanel.Name = "mainTableLayoutPanel";
-			this.mainTableLayoutPanel.RowCount = 2;
+			this.mainTableLayoutPanel.RowCount = 5;
 			this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
 			this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.mainTableLayoutPanel.Size = new System.Drawing.Size(1058, 583);
 			this.mainTableLayoutPanel.TabIndex = 0;
-			// 
-			// toolBarTableLayoutPanel
-			// 
-			this.toolBarTableLayoutPanel.ColumnCount = 3;
-			this.toolBarTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
-			this.toolBarTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-			this.toolBarTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.toolBarTableLayoutPanel.Controls.Add(this.tableLayoutPanel1, 0, 0);
-			this.toolBarTableLayoutPanel.Controls.Add(this.tableLayoutPanel2, 1, 0);
-			this.toolBarTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.toolBarTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-			this.toolBarTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
-			this.toolBarTableLayoutPanel.Name = "toolBarTableLayoutPanel";
-			this.toolBarTableLayoutPanel.RowCount = 1;
-			this.toolBarTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.toolBarTableLayoutPanel.Size = new System.Drawing.Size(1058, 80);
-			this.toolBarTableLayoutPanel.TabIndex = 0;
-			// 
-			// tableLayoutPanel1
-			// 
-			this.tableLayoutPanel1.ColumnCount = 5;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLayoutPanel1.Controls.Add(this.symbolSelectButton, 4, 0);
-			this.tableLayoutPanel1.Controls.Add(this.highLighterSelectButton, 3, 0);
-			this.tableLayoutPanel1.Controls.Add(this.eraserSelectButton, 2, 0);
-			this.tableLayoutPanel1.Controls.Add(this.textSelectButton, 1, 0);
-			this.tableLayoutPanel1.Controls.Add(this.penSelectButton, 0, 0);
-			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 1;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(394, 74);
-			this.tableLayoutPanel1.TabIndex = 0;
-			// 
-			// symbolSelectButton
-			// 
-			this.symbolSelectButton.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.symbolSelectButton.Location = new System.Drawing.Point(313, 1);
-			this.symbolSelectButton.Margin = new System.Windows.Forms.Padding(1);
-			this.symbolSelectButton.Name = "symbolSelectButton";
-			this.symbolSelectButton.Size = new System.Drawing.Size(80, 72);
-			this.symbolSelectButton.TabIndex = 4;
-			this.symbolSelectButton.Text = "Symbols";
-			this.symbolSelectButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.symbolSelectButton.UseVisualStyleBackColor = true;
-			this.symbolSelectButton.Click += new System.EventHandler(this.symbolSelectButton_Click);
-			// 
-			// highLighterSelectButton
-			// 
-			this.highLighterSelectButton.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.highLighterSelectButton.Location = new System.Drawing.Point(235, 1);
-			this.highLighterSelectButton.Margin = new System.Windows.Forms.Padding(1);
-			this.highLighterSelectButton.Name = "highLighterSelectButton";
-			this.highLighterSelectButton.Size = new System.Drawing.Size(76, 72);
-			this.highLighterSelectButton.TabIndex = 3;
-			this.highLighterSelectButton.Text = "Highlight";
-			this.highLighterSelectButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.highLighterSelectButton.UseVisualStyleBackColor = true;
-			this.highLighterSelectButton.Click += new System.EventHandler(this.highLighterSelectButton_Click);
-			// 
-			// eraserSelectButton
-			// 
-			this.eraserSelectButton.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.eraserSelectButton.Location = new System.Drawing.Point(157, 1);
-			this.eraserSelectButton.Margin = new System.Windows.Forms.Padding(1);
-			this.eraserSelectButton.Name = "eraserSelectButton";
-			this.eraserSelectButton.Size = new System.Drawing.Size(76, 72);
-			this.eraserSelectButton.TabIndex = 2;
-			this.eraserSelectButton.Text = "Eraser";
-			this.eraserSelectButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.eraserSelectButton.UseVisualStyleBackColor = true;
-			this.eraserSelectButton.Click += new System.EventHandler(this.eraserSelectButton_Click);
-			// 
-			// textSelectButton
-			// 
-			this.textSelectButton.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textSelectButton.Location = new System.Drawing.Point(79, 1);
-			this.textSelectButton.Margin = new System.Windows.Forms.Padding(1);
-			this.textSelectButton.Name = "textSelectButton";
-			this.textSelectButton.Size = new System.Drawing.Size(76, 72);
-			this.textSelectButton.TabIndex = 1;
-			this.textSelectButton.Text = "Text";
-			this.textSelectButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.textSelectButton.UseVisualStyleBackColor = true;
-			this.textSelectButton.Click += new System.EventHandler(this.textSelectButton_Click);
-			// 
-			// penSelectButton
-			// 
-			this.penSelectButton.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.penSelectButton.Location = new System.Drawing.Point(1, 1);
-			this.penSelectButton.Margin = new System.Windows.Forms.Padding(1);
-			this.penSelectButton.Name = "penSelectButton";
-			this.penSelectButton.Size = new System.Drawing.Size(76, 72);
-			this.penSelectButton.TabIndex = 0;
-			this.penSelectButton.Text = "Pen";
-			this.penSelectButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.penSelectButton.UseVisualStyleBackColor = true;
-			this.penSelectButton.Click += new System.EventHandler(this.penSelectButton_Click);
-			// 
-			// tableLayoutPanel2
-			// 
-			this.tableLayoutPanel2.ColumnCount = 2;
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 0);
-			this.tableLayoutPanel2.Controls.Add(this.colorPreviewPanel, 0, 0);
-			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(403, 3);
-			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-			this.tableLayoutPanel2.RowCount = 1;
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(194, 74);
-			this.tableLayoutPanel2.TabIndex = 1;
-			// 
-			// tableLayoutPanel3
-			// 
-			this.tableLayoutPanel3.ColumnCount = 1;
-			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel3.Controls.Add(this.opacityTrackBar, 0, 1);
-			this.tableLayoutPanel3.Controls.Add(this.widthNumericUpDown, 0, 0);
-			this.tableLayoutPanel3.Location = new System.Drawing.Point(97, 0);
-			this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-			this.tableLayoutPanel3.RowCount = 2;
-			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel3.Size = new System.Drawing.Size(97, 74);
-			this.tableLayoutPanel3.TabIndex = 0;
-			// 
-			// opacityTrackBar
-			// 
-			this.opacityTrackBar.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.opacityTrackBar.LargeChange = 20;
-			this.opacityTrackBar.Location = new System.Drawing.Point(1, 38);
-			this.opacityTrackBar.Margin = new System.Windows.Forms.Padding(1);
-			this.opacityTrackBar.Maximum = 255;
-			this.opacityTrackBar.Name = "opacityTrackBar";
-			this.opacityTrackBar.Size = new System.Drawing.Size(95, 35);
-			this.opacityTrackBar.SmallChange = 5;
-			this.opacityTrackBar.TabIndex = 0;
-			this.opacityTrackBar.TickFrequency = 15;
-			this.opacityTrackBar.Value = 255;
-			this.opacityTrackBar.ValueChanged += new System.EventHandler(this.opacityTrackBar_ValueChanged);
-			// 
-			// widthNumericUpDown
-			// 
-			this.widthNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.widthNumericUpDown.Location = new System.Drawing.Point(3, 8);
-			this.widthNumericUpDown.Maximum = new decimal(new int[] {
-            300,
-            0,
-            0,
-            0});
-			this.widthNumericUpDown.Name = "widthNumericUpDown";
-			this.widthNumericUpDown.Size = new System.Drawing.Size(53, 20);
-			this.widthNumericUpDown.TabIndex = 1;
-			this.widthNumericUpDown.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-			this.widthNumericUpDown.ValueChanged += new System.EventHandler(this.widthNumericUpDown_ValueChanged);
-			// 
-			// colorPreviewPanel
-			// 
-			this.colorPreviewPanel.BackColor = System.Drawing.Color.Black;
-			this.colorPreviewPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.colorPreviewPanel.Location = new System.Drawing.Point(10, 10);
-			this.colorPreviewPanel.Margin = new System.Windows.Forms.Padding(10);
-			this.colorPreviewPanel.Name = "colorPreviewPanel";
-			this.colorPreviewPanel.Size = new System.Drawing.Size(77, 54);
-			this.colorPreviewPanel.TabIndex = 1;
-			this.colorPreviewPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.colorPreviewPanel_MouseClick);
 			// 
 			// mainControlTableLayoutPanel
 			// 
@@ -275,6 +98,7 @@ namespace scorepager_desktop {
 			// 
 			// tableLayoutPanel4
 			// 
+			this.tableLayoutPanel4.BackColor = System.Drawing.SystemColors.ControlDark;
 			this.tableLayoutPanel4.ColumnCount = 1;
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -295,7 +119,7 @@ namespace scorepager_desktop {
 			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel6, 0, 1);
-			this.tableLayoutPanel5.Controls.Add(this.label1, 0, 0);
+			this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel8, 0, 0);
 			this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -330,6 +154,7 @@ namespace scorepager_desktop {
 			this.nextPageButton.TabIndex = 2;
 			this.nextPageButton.Text = ">";
 			this.nextPageButton.UseVisualStyleBackColor = true;
+			this.nextPageButton.Click += new System.EventHandler(this.nextPageButton_Click);
 			// 
 			// PreviousPageButton
 			// 
@@ -340,16 +165,7 @@ namespace scorepager_desktop {
 			this.PreviousPageButton.TabIndex = 0;
 			this.PreviousPageButton.Text = "<";
 			this.PreviousPageButton.UseVisualStyleBackColor = true;
-			// 
-			// label1
-			// 
-			this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(57, 18);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(35, 13);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "label1";
+			this.PreviousPageButton.Click += new System.EventHandler(this.PreviousPageButton_Click);
 			// 
 			// tableLayoutPanel7
 			// 
@@ -377,6 +193,222 @@ namespace scorepager_desktop {
 			this.canvasPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.canvasPictureBox_MouseMove);
 			this.canvasPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.canvasPictureBox_MouseUp);
 			// 
+			// tableLayoutPanel8
+			// 
+			this.tableLayoutPanel8.ColumnCount = 1;
+			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel8.Controls.Add(this.labelPageCount, 0, 1);
+			this.tableLayoutPanel8.Controls.Add(this.label1, 0, 0);
+			this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 0);
+			this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
+			this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+			this.tableLayoutPanel8.RowCount = 2;
+			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel8.Size = new System.Drawing.Size(150, 50);
+			this.tableLayoutPanel8.TabIndex = 1;
+			// 
+			// label1
+			// 
+			this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(56, 6);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(37, 13);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "Pages";
+			// 
+			// labelPageCount
+			// 
+			this.labelPageCount.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.labelPageCount.AutoSize = true;
+			this.labelPageCount.Location = new System.Drawing.Point(63, 31);
+			this.labelPageCount.Name = "labelPageCount";
+			this.labelPageCount.Size = new System.Drawing.Size(24, 13);
+			this.labelPageCount.TabIndex = 1;
+			this.labelPageCount.Text = "0/0";
+			// 
+			// tableLayoutPanel2
+			// 
+			this.tableLayoutPanel2.ColumnCount = 2;
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.colorPreviewPanel, 0, 0);
+			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(403, 3);
+			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			this.tableLayoutPanel2.RowCount = 1;
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(194, 74);
+			this.tableLayoutPanel2.TabIndex = 1;
+			// 
+			// colorPreviewPanel
+			// 
+			this.colorPreviewPanel.BackColor = System.Drawing.Color.Black;
+			this.colorPreviewPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.colorPreviewPanel.Location = new System.Drawing.Point(10, 10);
+			this.colorPreviewPanel.Margin = new System.Windows.Forms.Padding(10);
+			this.colorPreviewPanel.Name = "colorPreviewPanel";
+			this.colorPreviewPanel.Size = new System.Drawing.Size(77, 54);
+			this.colorPreviewPanel.TabIndex = 1;
+			this.colorPreviewPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.colorPreviewPanel_MouseClick);
+			// 
+			// tableLayoutPanel3
+			// 
+			this.tableLayoutPanel3.ColumnCount = 1;
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel3.Controls.Add(this.opacityTrackBar, 0, 1);
+			this.tableLayoutPanel3.Controls.Add(this.widthNumericUpDown, 0, 0);
+			this.tableLayoutPanel3.Location = new System.Drawing.Point(97, 0);
+			this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+			this.tableLayoutPanel3.RowCount = 2;
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(97, 74);
+			this.tableLayoutPanel3.TabIndex = 0;
+			// 
+			// widthNumericUpDown
+			// 
+			this.widthNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.widthNumericUpDown.Location = new System.Drawing.Point(3, 8);
+			this.widthNumericUpDown.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+			this.widthNumericUpDown.Name = "widthNumericUpDown";
+			this.widthNumericUpDown.Size = new System.Drawing.Size(53, 20);
+			this.widthNumericUpDown.TabIndex = 1;
+			this.widthNumericUpDown.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			this.widthNumericUpDown.ValueChanged += new System.EventHandler(this.widthNumericUpDown_ValueChanged);
+			// 
+			// opacityTrackBar
+			// 
+			this.opacityTrackBar.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.opacityTrackBar.LargeChange = 20;
+			this.opacityTrackBar.Location = new System.Drawing.Point(1, 38);
+			this.opacityTrackBar.Margin = new System.Windows.Forms.Padding(1);
+			this.opacityTrackBar.Maximum = 255;
+			this.opacityTrackBar.Name = "opacityTrackBar";
+			this.opacityTrackBar.Size = new System.Drawing.Size(95, 35);
+			this.opacityTrackBar.SmallChange = 5;
+			this.opacityTrackBar.TabIndex = 0;
+			this.opacityTrackBar.TickFrequency = 15;
+			this.opacityTrackBar.Value = 255;
+			this.opacityTrackBar.ValueChanged += new System.EventHandler(this.opacityTrackBar_ValueChanged);
+			// 
+			// tableLayoutPanel1
+			// 
+			this.tableLayoutPanel1.ColumnCount = 5;
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableLayoutPanel1.Controls.Add(this.symbolSelectButton, 4, 0);
+			this.tableLayoutPanel1.Controls.Add(this.highLighterSelectButton, 3, 0);
+			this.tableLayoutPanel1.Controls.Add(this.eraserSelectButton, 2, 0);
+			this.tableLayoutPanel1.Controls.Add(this.textSelectButton, 1, 0);
+			this.tableLayoutPanel1.Controls.Add(this.penSelectButton, 0, 0);
+			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			this.tableLayoutPanel1.RowCount = 1;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(394, 74);
+			this.tableLayoutPanel1.TabIndex = 0;
+			// 
+			// penSelectButton
+			// 
+			this.penSelectButton.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.penSelectButton.Location = new System.Drawing.Point(1, 1);
+			this.penSelectButton.Margin = new System.Windows.Forms.Padding(1);
+			this.penSelectButton.Name = "penSelectButton";
+			this.penSelectButton.Size = new System.Drawing.Size(76, 72);
+			this.penSelectButton.TabIndex = 0;
+			this.penSelectButton.Text = "Pen";
+			this.penSelectButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.penSelectButton.UseVisualStyleBackColor = true;
+			this.penSelectButton.Click += new System.EventHandler(this.penSelectButton_Click);
+			// 
+			// textSelectButton
+			// 
+			this.textSelectButton.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textSelectButton.Location = new System.Drawing.Point(79, 1);
+			this.textSelectButton.Margin = new System.Windows.Forms.Padding(1);
+			this.textSelectButton.Name = "textSelectButton";
+			this.textSelectButton.Size = new System.Drawing.Size(76, 72);
+			this.textSelectButton.TabIndex = 1;
+			this.textSelectButton.Text = "Text";
+			this.textSelectButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.textSelectButton.UseVisualStyleBackColor = true;
+			this.textSelectButton.Click += new System.EventHandler(this.textSelectButton_Click);
+			// 
+			// eraserSelectButton
+			// 
+			this.eraserSelectButton.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.eraserSelectButton.Location = new System.Drawing.Point(157, 1);
+			this.eraserSelectButton.Margin = new System.Windows.Forms.Padding(1);
+			this.eraserSelectButton.Name = "eraserSelectButton";
+			this.eraserSelectButton.Size = new System.Drawing.Size(76, 72);
+			this.eraserSelectButton.TabIndex = 2;
+			this.eraserSelectButton.Text = "Eraser";
+			this.eraserSelectButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.eraserSelectButton.UseVisualStyleBackColor = true;
+			this.eraserSelectButton.Click += new System.EventHandler(this.eraserSelectButton_Click);
+			// 
+			// highLighterSelectButton
+			// 
+			this.highLighterSelectButton.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.highLighterSelectButton.Location = new System.Drawing.Point(235, 1);
+			this.highLighterSelectButton.Margin = new System.Windows.Forms.Padding(1);
+			this.highLighterSelectButton.Name = "highLighterSelectButton";
+			this.highLighterSelectButton.Size = new System.Drawing.Size(76, 72);
+			this.highLighterSelectButton.TabIndex = 3;
+			this.highLighterSelectButton.Text = "Highlight";
+			this.highLighterSelectButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.highLighterSelectButton.UseVisualStyleBackColor = true;
+			this.highLighterSelectButton.Click += new System.EventHandler(this.highLighterSelectButton_Click);
+			// 
+			// symbolSelectButton
+			// 
+			this.symbolSelectButton.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.symbolSelectButton.Location = new System.Drawing.Point(313, 1);
+			this.symbolSelectButton.Margin = new System.Windows.Forms.Padding(1);
+			this.symbolSelectButton.Name = "symbolSelectButton";
+			this.symbolSelectButton.Size = new System.Drawing.Size(80, 72);
+			this.symbolSelectButton.TabIndex = 4;
+			this.symbolSelectButton.Text = "Symbols";
+			this.symbolSelectButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.symbolSelectButton.UseVisualStyleBackColor = true;
+			this.symbolSelectButton.Click += new System.EventHandler(this.symbolSelectButton_Click);
+			// 
+			// toolBarTableLayoutPanel
+			// 
+			this.toolBarTableLayoutPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.toolBarTableLayoutPanel.ColumnCount = 3;
+			this.toolBarTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+			this.toolBarTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+			this.toolBarTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.toolBarTableLayoutPanel.Controls.Add(this.tableLayoutPanel1, 0, 0);
+			this.toolBarTableLayoutPanel.Controls.Add(this.tableLayoutPanel2, 1, 0);
+			this.toolBarTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.toolBarTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+			this.toolBarTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
+			this.toolBarTableLayoutPanel.Name = "toolBarTableLayoutPanel";
+			this.toolBarTableLayoutPanel.RowCount = 1;
+			this.toolBarTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.toolBarTableLayoutPanel.Size = new System.Drawing.Size(1058, 80);
+			this.toolBarTableLayoutPanel.TabIndex = 0;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -386,20 +418,21 @@ namespace scorepager_desktop {
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.mainTableLayoutPanel.ResumeLayout(false);
-			this.toolBarTableLayoutPanel.ResumeLayout(false);
-			this.tableLayoutPanel1.ResumeLayout(false);
-			this.tableLayoutPanel2.ResumeLayout(false);
-			this.tableLayoutPanel3.ResumeLayout(false);
-			this.tableLayoutPanel3.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.opacityTrackBar)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.widthNumericUpDown)).EndInit();
 			this.mainControlTableLayoutPanel.ResumeLayout(false);
 			this.tableLayoutPanel4.ResumeLayout(false);
 			this.tableLayoutPanel5.ResumeLayout(false);
-			this.tableLayoutPanel5.PerformLayout();
 			this.tableLayoutPanel6.ResumeLayout(false);
 			this.tableLayoutPanel7.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).EndInit();
+			this.tableLayoutPanel8.ResumeLayout(false);
+			this.tableLayoutPanel8.PerformLayout();
+			this.tableLayoutPanel2.ResumeLayout(false);
+			this.tableLayoutPanel3.ResumeLayout(false);
+			this.tableLayoutPanel3.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.widthNumericUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.opacityTrackBar)).EndInit();
+			this.tableLayoutPanel1.ResumeLayout(false);
+			this.toolBarTableLayoutPanel.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -407,27 +440,29 @@ namespace scorepager_desktop {
 		#endregion
 
 		private System.Windows.Forms.TableLayoutPanel mainTableLayoutPanel;
-		private System.Windows.Forms.TableLayoutPanel toolBarTableLayoutPanel;
 		private System.Windows.Forms.TableLayoutPanel mainControlTableLayoutPanel;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-		private System.Windows.Forms.Button penSelectButton;
-		private System.Windows.Forms.Button symbolSelectButton;
-		private System.Windows.Forms.Button highLighterSelectButton;
-		private System.Windows.Forms.Button eraserSelectButton;
-		private System.Windows.Forms.Button textSelectButton;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-		private System.Windows.Forms.TrackBar opacityTrackBar;
-		private System.Windows.Forms.NumericUpDown widthNumericUpDown;
-		private System.Windows.Forms.Panel colorPreviewPanel;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
 		private System.Windows.Forms.Button nextPageButton;
 		private System.Windows.Forms.Button PreviousPageButton;
-		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
 		private System.Windows.Forms.PictureBox canvasPictureBox;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+		private System.Windows.Forms.Label labelPageCount;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.TableLayoutPanel toolBarTableLayoutPanel;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private System.Windows.Forms.Button symbolSelectButton;
+		private System.Windows.Forms.Button highLighterSelectButton;
+		private System.Windows.Forms.Button eraserSelectButton;
+		private System.Windows.Forms.Button textSelectButton;
+		private System.Windows.Forms.Button penSelectButton;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+		private System.Windows.Forms.TrackBar opacityTrackBar;
+		private System.Windows.Forms.NumericUpDown widthNumericUpDown;
+		private System.Windows.Forms.Panel colorPreviewPanel;
 	}
 }
 
