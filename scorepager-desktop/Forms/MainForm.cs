@@ -7,7 +7,7 @@ using scorepager_desktop.Structures;
 using scorepager_desktop.Classes;
 using scorepager_desktop.UserControls;
 
-namespace scorepager_desktop {
+namespace scorepager_desktop.Forms {
 	public partial class MainForm : Form {
 		private PDFFile file;
 		private Page currentPage;

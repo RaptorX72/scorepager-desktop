@@ -1,5 +1,5 @@
 ﻿
-namespace scorepager_desktop {
+namespace scorepager_desktop.Forms {
 	partial class MainForm {
 		/// <summary>
 		/// Required designer variable.
