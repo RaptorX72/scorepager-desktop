@@ -267,6 +267,7 @@
     <Compile Include="Classes\Layer.cs" />
     <Compile Include="Classes\Page.cs" />
     <Compile Include="Classes\PDFFile.cs" />
+    <Compile Include="Classes\Score.cs" />
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
