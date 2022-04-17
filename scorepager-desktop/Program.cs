@@ -17,6 +17,7 @@ namespace scorepager_desktop {
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			client = FirebaseClient.GetInstance();
+			StorageManager.Initialize();
 			Application.Run(new LoginForm());
 		}
 	}

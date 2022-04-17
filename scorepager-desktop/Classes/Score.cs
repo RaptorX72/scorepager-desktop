@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace scorepager_desktop.Classes {
-	class Score {
+	public class Score {
 		private string composer;
 		private string title;
 		private string storageFolder;
@@ -15,8 +15,8 @@ namespace scorepager_desktop.Classes {
 
 		public string Composer { get => composer; }
 		public string Title { get => title; }
-		public string StorageFolder { get => storageFolder; }
-		public string Url { get => url; }
+		public string StorageFolder { get => storageFolder; set => storageFolder = value; }
+		public string Url { get => url; set => url = value; }
 		public bool Rented { get => rented; set => rented = value; }
 		public int RentDate {
 			get => timestamp;
@@ -24,13 +24,13 @@ namespace scorepager_desktop.Classes {
 		} 
 
 
-		public Score(string composer, string title, string storageFolder, string url) {
+		public Score(string composer, string title, string storageFolder, string url, bool rented = false, int timestamp = 0) {
 			this.composer = composer;
 			this.title = title;
 			this.storageFolder = storageFolder;
 			this.url = url;
-			this.rented = false;
-			this.timestamp = 0;
+			this.rented = rented;
+			this.timestamp = timestamp;
 		}
 	}
 }

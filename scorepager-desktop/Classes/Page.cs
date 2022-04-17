@@ -10,16 +10,14 @@ namespace scorepager_desktop.Classes {
 		private Bitmap bitmap;
 		private int number;
 		private Layer userLayer;
-		private List<Layer> otherLayers = new List<Layer>();
 
 		public Bitmap Bitmap { get => bitmap; }
 		public int Number { get => number; }
 
-		public Page(Bitmap bitmap, int number, Layer userLayer, List<Layer> otherLayers) {
+		public Page(Bitmap bitmap, int number, Layer userLayer) {
 			this.bitmap = bitmap;
 			this.number = number;
 			this.userLayer = userLayer;
-			this.otherLayers = otherLayers;
 		}
 
 		public void SetUserLayer(Bitmap bitmap) {
