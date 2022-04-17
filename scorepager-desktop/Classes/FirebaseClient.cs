@@ -8,7 +8,7 @@ using System.Net;
 
 namespace scorepager_desktop.Classes {
 	class FirebaseClient {
-		private const string API_KEY = "AIzaSyAqCPbrsMc437mOHXRZF0T2hpcP9XMlQ0c";
+		private static string API_KEY;
 		private static FirebaseClient client;
 		private User user;
 		private static bool loggedIn;
@@ -19,8 +19,11 @@ namespace scorepager_desktop.Classes {
 		public string UserID { get { return loggedIn ? user.LocalId : null; } }
 
 		public FirebaseClient() {
-			string path = AppDomain.CurrentDomain.BaseDirectory + @"..\..\Resources\JSON\firestoredb.json";
-			Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+			string path = AppDomain.CurrentDomain.BaseDirectory + @"..\..\Resources\JSON\";
+			using (System.IO.StreamReader sr = new System.IO.StreamReader(path + "apikey.txt")) {
+				API_KEY = sr.ReadLine();
+			}
+			Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path + "firestoredb.json");
 			db = FirestoreDb.Create("scorepagerprivatedesktop");
 		}
 
@@ -57,7 +60,7 @@ namespace scorepager_desktop.Classes {
 					docSnap.GetValue<string>("url")
 				));
 			}
-			return null;
+			return scores;
 		}
 	}
 }

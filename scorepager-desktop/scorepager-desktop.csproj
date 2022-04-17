@@ -339,6 +339,7 @@
   <ItemGroup>
     <Content Include="Resources\Icons\icon_sharp.png" />
     <Content Include="Resources\Icons\icon_violin.png" />
+    <Content Include="Resources\JSON\apikey.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Grpc.Core.2.41.0\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.2.41.0\build\net45\Grpc.Core.targets')" />
