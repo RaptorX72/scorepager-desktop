@@ -33,6 +33,7 @@ namespace scorepager_desktop.Forms {
 		#region UserControls
 		List<MasterUserControl> userControls = new List<MasterUserControl>() {
 			new SymbolSelector(),
+			new TextSelector()
 		};
 		#endregion
 		public MainForm() {
@@ -256,7 +257,7 @@ namespace scorepager_desktop.Forms {
 		}
 
 		private void textBoxCanvasText_TextChanged(object sender, EventArgs e) {
-			if (textBoxCanvasText.Focused && isTyping && textBoxCanvasText.Text != "") DrawStringToCanvas(textBoxCanvasText.Text);
+			if (textBoxCanvasText.Focused && isTyping) DrawStringToCanvas(textBoxCanvasText.Text);
 		}
 
 		private void SetBufferImage(Image img) {
@@ -266,7 +267,7 @@ namespace scorepager_desktop.Forms {
 		private void DrawStringToCanvas(string text) {
 			graphics.Clear(Color.Transparent);
 			graphics.DrawImage(bufferImage, 0, 0);
-			graphics.DrawString(text, new Font(new FontFamily("Calibri"), 16f), solidBrush, textPoint);
+			graphics.DrawString(text, new Font(new FontFamily(((TextSelector)userControls[1]).SelectedFont), (int)widthNumericUpDown.Value), solidBrush, textPoint);
 			canvasPictureBox.Refresh();
 		}
 
@@ -299,6 +300,7 @@ namespace scorepager_desktop.Forms {
 				case DrawType.HIGHLIGHTER:
 					break;
 				case DrawType.TEXT:
+					index = 1;
 					break;
 				case DrawType.SYMBOL:
 					index = 0;
