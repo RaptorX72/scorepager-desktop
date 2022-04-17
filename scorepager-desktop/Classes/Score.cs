@@ -32,5 +32,9 @@ namespace scorepager_desktop.Classes {
 			this.rented = rented;
 			this.timestamp = timestamp;
 		}
+
+		public override string ToString() {
+			return $"{this.composer}:{this.title}" + (this.rented ? "(Rented)" : "");
+		}
 	}
 }

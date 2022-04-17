@@ -16,9 +16,9 @@ namespace scorepager_desktop.Forms {
 			if (success) {
 				emailTextBox.Clear();
 				passWordMaskedTextBox.Clear();
-				MainForm mf = new MainForm();
+				ScoreBrowser sb = new ScoreBrowser();
 				this.Hide();
-				mf.ShowDialog();
+				sb.ShowDialog();
 				this.Show();
 			}
 		}

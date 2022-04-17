@@ -27,7 +27,7 @@ namespace scorepager_desktop.Classes {
 		public static List<Score> GetRentedScoresForUser(string uid) {
 			List<Score> scores = new List<Score>();
 			string path = appPathUsers + @"\" + uid;
-			if (!Directory.Exists(path)) return null;
+			if (!Directory.Exists(path)) return new List<Score>();
 			foreach (string directory in Directory.GetDirectories(path)) {
 				string[] content = Directory.GetFiles(directory);
 				string composer = "", title = "", url = "";
