@@ -4,10 +4,11 @@ using Firebase.Auth;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Net;
 
 namespace scorepager_desktop.Classes {
 	class FirebaseClient {
-		private const string API_KEY = "AIzaSyDq0hFVdYy4r-whzaLX7gR92qTdMPyQZSM";
+		private const string API_KEY = "AIzaSyAqCPbrsMc437mOHXRZF0T2hpcP9XMlQ0c";
 		private static FirebaseClient client;
 		private User user;
 		private static bool loggedIn;
@@ -20,7 +21,7 @@ namespace scorepager_desktop.Classes {
 		public FirebaseClient() {
 			string path = AppDomain.CurrentDomain.BaseDirectory + @"..\..\Resources\JSON\firestoredb.json";
 			Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-			db = FirestoreDb.Create("scores");
+			db = FirestoreDb.Create("scorepagerprivatedesktop");
 		}
 
 		public static FirebaseClient GetInstance() {
@@ -46,16 +47,15 @@ namespace scorepager_desktop.Classes {
 		}
 
 		public async Task<List<Score>> GetScores() {
+			List<Score> scores = new List<Score>();
 			QuerySnapshot scoresSnap = await db.Collection("scores").GetSnapshotAsync();
-			foreach (DocumentSnapshot docSnap in scoresSnap.Documents)
-			{
-				Score score = new Score(
+			foreach (DocumentSnapshot docSnap in scoresSnap.Documents) {
+				scores.Add( new Score(
 					docSnap.GetValue<string>("composer"),
 					docSnap.GetValue<string>("title"),
 					docSnap.GetValue<string>("uid"),
 					docSnap.GetValue<string>("url")
-				);
-				MessageBox.Show(score.ToString());
+				));
 			}
 			return null;
 		}
