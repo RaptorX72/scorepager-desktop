@@ -37,6 +37,7 @@ namespace scorepager_desktop.Forms {
 			this.opacityTrackBar = new System.Windows.Forms.TrackBar();
 			this.widthNumericUpDown = new System.Windows.Forms.NumericUpDown();
 			this.colorPreviewPanel = new System.Windows.Forms.Panel();
+			this.toolBarPanel = new System.Windows.Forms.Panel();
 			this.mainControlTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -59,7 +60,6 @@ namespace scorepager_desktop.Forms {
 			this.accountSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolBarPanel = new System.Windows.Forms.Panel();
 			this.mainTableLayoutPanel.SuspendLayout();
 			this.toolBarTableLayoutPanel.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -278,6 +278,16 @@ namespace scorepager_desktop.Forms {
 			this.colorPreviewPanel.TabIndex = 1;
 			this.colorPreviewPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.colorPreviewPanel_MouseClick);
 			// 
+			// toolBarPanel
+			// 
+			this.toolBarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.toolBarPanel.Location = new System.Drawing.Point(600, 0);
+			this.toolBarPanel.Margin = new System.Windows.Forms.Padding(0);
+			this.toolBarPanel.Name = "toolBarPanel";
+			this.toolBarPanel.Size = new System.Drawing.Size(464, 80);
+			this.toolBarPanel.TabIndex = 2;
+			this.toolBarPanel.Resize += new System.EventHandler(this.toolBarPanel_Resize);
+			// 
 			// mainControlTableLayoutPanel
 			// 
 			this.mainControlTableLayoutPanel.ColumnCount = 2;
@@ -346,9 +356,9 @@ namespace scorepager_desktop.Forms {
 			// nextPageButton
 			// 
 			this.nextPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.nextPageButton.Location = new System.Drawing.Point(103, 3);
+			this.nextPageButton.Location = new System.Drawing.Point(101, 3);
 			this.nextPageButton.Name = "nextPageButton";
-			this.nextPageButton.Size = new System.Drawing.Size(44, 44);
+			this.nextPageButton.Size = new System.Drawing.Size(46, 44);
 			this.nextPageButton.TabIndex = 2;
 			this.nextPageButton.Text = ">";
 			this.nextPageButton.UseVisualStyleBackColor = true;
@@ -359,7 +369,7 @@ namespace scorepager_desktop.Forms {
 			this.PreviousPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PreviousPageButton.Location = new System.Drawing.Point(3, 3);
 			this.PreviousPageButton.Name = "PreviousPageButton";
-			this.PreviousPageButton.Size = new System.Drawing.Size(44, 44);
+			this.PreviousPageButton.Size = new System.Drawing.Size(43, 44);
 			this.PreviousPageButton.TabIndex = 0;
 			this.PreviousPageButton.Text = "<";
 			this.PreviousPageButton.UseVisualStyleBackColor = true;
@@ -452,19 +462,20 @@ namespace scorepager_desktop.Forms {
 			// browseScoresToolStripMenuItem
 			// 
 			this.browseScoresToolStripMenuItem.Name = "browseScoresToolStripMenuItem";
-			this.browseScoresToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+			this.browseScoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.browseScoresToolStripMenuItem.Text = "Browse scores";
 			// 
 			// closeScoresToolStripMenuItem
 			// 
 			this.closeScoresToolStripMenuItem.Name = "closeScoresToolStripMenuItem";
-			this.closeScoresToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+			this.closeScoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.closeScoresToolStripMenuItem.Text = "Save score";
+			this.closeScoresToolStripMenuItem.Click += new System.EventHandler(this.closeScoresToolStripMenuItem_Click);
 			// 
 			// discardScoreToolStripMenuItem
 			// 
 			this.discardScoreToolStripMenuItem.Name = "discardScoreToolStripMenuItem";
-			this.discardScoreToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+			this.discardScoreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.discardScoreToolStripMenuItem.Text = "Discard score";
 			// 
 			// settingsToolStripMenuItem
@@ -507,16 +518,6 @@ namespace scorepager_desktop.Forms {
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
 			this.exitToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
 			this.exitToolStripMenuItem.Text = "Exit";
-			// 
-			// toolBarPanel
-			// 
-			this.toolBarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.toolBarPanel.Location = new System.Drawing.Point(600, 0);
-			this.toolBarPanel.Margin = new System.Windows.Forms.Padding(0);
-			this.toolBarPanel.Name = "toolBarPanel";
-			this.toolBarPanel.Size = new System.Drawing.Size(464, 80);
-			this.toolBarPanel.TabIndex = 2;
-			this.toolBarPanel.Resize += new System.EventHandler(this.toolBarPanel_Resize);
 			// 
 			// MainForm
 			// 

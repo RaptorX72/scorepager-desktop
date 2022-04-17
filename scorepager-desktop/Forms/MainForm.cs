@@ -35,7 +35,7 @@ namespace scorepager_desktop.Forms {
 			new SymbolSelector(),
 		};
 		#endregion
-		public MainForm() {
+		public MainForm(PDFFile file) {
 			InitializeComponent();
 
 			textBoxCanvasText = new TextBox();
@@ -49,9 +49,7 @@ namespace scorepager_desktop.Forms {
 			solidBrush = new SolidBrush(color);
 			pen = new Pen(solidBrush, Convert.ToInt32(widthNumericUpDown.Value));
 
-			OpenFileDialog ofd = new OpenFileDialog();
-			if (ofd.ShowDialog() == DialogResult.OK) file = new PDFFile(ofd.FileName);
-			else Environment.Exit(0);
+			this.file = file;
 
 			SetCurrentPageAndLayer(1);
 		}
@@ -310,6 +308,12 @@ namespace scorepager_desktop.Forms {
 			userControls[index].SetActive(true);
 			userControls[index].ResizeControl(toolBarPanel.Size);
 			toolBarPanel.Controls.Add(userControls[index]);
+		}
+
+		private void closeScoresToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetCurrentPageAndLayer(currentPageNumber);
+			file.Save();
+			MessageBox.Show("Changes saved!");
 		}
 	}
 }

@@ -19,11 +19,16 @@ namespace scorepager_desktop.Forms {
 		public ScoreBrowser() {
 			InitializeComponent();
 			client = FirebaseClient.GetInstance();
+			Setup();
+		}
+
+		private void Setup() {
 			res = client.GetScores();
+			AvailableScoresListBox.Enabled = false;
 			resultTimer.Enabled = true;
 		}
 
-		private async void LoadLists() {
+		private void LoadLists() {
 			scoresDB = res.Result;
 			scoresLocal = StorageManager.GetRentedScoresForUser(client.UserID);
 			CombineLists();
@@ -56,6 +61,7 @@ namespace scorepager_desktop.Forms {
 		private void resultTimer_Tick(object sender, EventArgs e) {
 			if (res != null && res.IsCompleted) {
 				resultTimer.Enabled = false;
+				AvailableScoresListBox.Enabled = true;
 				LoadLists();
 			}
 		}
@@ -65,7 +71,25 @@ namespace scorepager_desktop.Forms {
 			labelComposer.Text = scores[index].Composer;
 			labelTitle.Text = scores[index].Title;
 			labelLeased.Text = scores[index].Rented ? "Yes" : "No";
-			labelEndDate.Text = scores[index].Rented ? DateTime.MinValue.AddSeconds(scores[index].RentDate).ToString("yyyy-mm-dd") : "";
+			labelEndDate.Text = scores[index].Rented ? CommonTools.UnixTimestampToDateTime(scores[index].RentDate).ToString("yyyy-MM-dd") : "";
+			buttonLoad.Text = scores[index].Rented ? "Edit" : "Lease";
+		}
+
+		private void buttonLoad_Click(object sender, EventArgs e) {
+			Score currentscore = scores[AvailableScoresListBox.SelectedIndex];
+			if (currentscore.Rented) {
+				PDFFile file = new PDFFile(currentscore);
+				MainForm mf = new MainForm(file);
+				this.Hide();
+				mf.ShowDialog();
+				//
+				mf.Dispose();
+				this.Show();
+			} else {
+				scores[AvailableScoresListBox.SelectedIndex] = StorageManager.DownloadScoreForUser(client.UserID, currentscore);
+				MessageBox.Show(scores[AvailableScoresListBox.SelectedIndex].ToString());
+				FillListBox();
+			}
 		}
 	}
 }

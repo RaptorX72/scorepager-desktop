@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using scorepager_desktop.Structures;
 
 namespace scorepager_desktop.Classes {
-	class Layer {
+	public class Layer {
 		private Bitmap bitmap;
 		private LayerOwner owner;
 		public Bitmap Bitmap { get => bitmap; set => bitmap = value; }

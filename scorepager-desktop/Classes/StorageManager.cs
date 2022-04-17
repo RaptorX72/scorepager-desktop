@@ -31,13 +31,13 @@ namespace scorepager_desktop.Classes {
 			foreach (string directory in Directory.GetDirectories(path)) {
 				string[] content = Directory.GetFiles(directory);
 				string composer = "", title = "", url = "";
-				int timestamp = 0;
+				long timestamp = 0;
 				foreach (string item in content) {
 					if (item.EndsWith(SAVEFILE_NAME)) {
 						string[] info = File.ReadAllLines(item);
 						composer = info[0];
 						title = info[1];
-						timestamp = Convert.ToInt32(info[2]);
+						timestamp = long.Parse(info[2]);
 					} else if (item.EndsWith(PDF_NAME)) url = item;
 				}
 				scores.Add(new Score(composer, title, directory, url, true, timestamp));
@@ -51,29 +51,34 @@ namespace scorepager_desktop.Classes {
 			if (!Directory.Exists(path)) Directory.CreateDirectory(path);
 			Directory.CreateDirectory(scorePath);
 			Directory.CreateDirectory(scorePath + LAYERS_NAME);
+			long rentDate = CommonTools.DateTimeToUnixTimstamp(DateTime.Now, 2592000);
 			using (StreamWriter sw = new StreamWriter(scorePath + SAVEFILE_NAME)) {
 				sw.WriteLine(score.Composer);
 				sw.WriteLine(score.Title);
-				sw.WriteLine(score.RentDate);
+				sw.WriteLine(rentDate);
 			}
 			using (System.Net.WebClient download = new System.Net.WebClient()) {
 				download.DownloadFile(score.Url, scorePath + PDF_NAME);
 			}
-			score.StorageFolder = scorePath;
-			score.Url = scorePath + PDF_NAME;
-			return score;
+			return new Score(score.Composer, score.Title, scorePath, scorePath + PDF_NAME, true, rentDate);
 		}
 
 		public static Bitmap GetLayerForScore(Score score, int pageNumber) {
 			string path = score.StorageFolder + LAYERS_NAME;
 			string layerPath = path + @"\" + pageNumber.ToString() + ".bmp";
 			if (!File.Exists(layerPath)) return null;
-			return (Bitmap)Bitmap.FromFile(layerPath);
+			Bitmap image;
+			using (var temp = new Bitmap(layerPath)) {
+				image = new Bitmap(temp);
+			}
+			return (Bitmap)image;
 		}
 
 		public static void SaveLayerForScore(Score score, int pageNumber, Bitmap image) {
+			if (image == null) return;
 			string path = score.StorageFolder + LAYERS_NAME;
 			string layerPath = path + @"\" + pageNumber.ToString() + ".bmp";
+			if (File.Exists(layerPath)) File.Delete(layerPath);
 			image.Save(layerPath);
 		}
 	} 

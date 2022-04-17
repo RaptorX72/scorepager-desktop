@@ -10,5 +10,15 @@ namespace scorepager_desktop.Classes {
             while (0 < length--) res.Append(valid[rnd.Next(valid.Length)]);
             return res.ToString();
         }
+
+        public static long DateTimeToUnixTimstamp(DateTime dt, int extraSeconds = 0) {
+            return DateTimeOffset.Now.ToUnixTimeSeconds() + extraSeconds;
+        }
+
+        public static DateTime UnixTimestampToDateTime(long timestamp) {
+            DateTime dt = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            dt = dt.AddSeconds(timestamp);
+            return dt;
+        }
 	}
 }

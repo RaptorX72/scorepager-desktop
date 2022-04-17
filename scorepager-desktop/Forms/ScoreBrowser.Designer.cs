@@ -59,6 +59,7 @@
 			this.buttonLoad.TabIndex = 1;
 			this.buttonLoad.Text = "Lease";
 			this.buttonLoad.UseVisualStyleBackColor = true;
+			this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
 			// 
 			// groupBox1
 			// 

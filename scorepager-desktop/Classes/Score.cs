@@ -11,20 +11,20 @@ namespace scorepager_desktop.Classes {
 		private string storageFolder;
 		private string url;
 		private bool rented;
-		private int timestamp;
+		private long timestamp;
 
 		public string Composer { get => composer; }
 		public string Title { get => title; }
 		public string StorageFolder { get => storageFolder; set => storageFolder = value; }
 		public string Url { get => url; set => url = value; }
 		public bool Rented { get => rented; set => rented = value; }
-		public int RentDate {
+		public long RentDate {
 			get => timestamp;
 			set { if (!rented) timestamp = value; }
 		} 
 
 
-		public Score(string composer, string title, string storageFolder, string url, bool rented = false, int timestamp = 0) {
+		public Score(string composer, string title, string storageFolder, string url, bool rented = false, long timestamp = 0) {
 			this.composer = composer;
 			this.title = title;
 			this.storageFolder = storageFolder;

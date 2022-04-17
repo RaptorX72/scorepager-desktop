@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace scorepager_desktop.Classes {
-	class Page {
+	public class Page {
 		private Bitmap bitmap;
 		private int number;
 		private Layer userLayer;

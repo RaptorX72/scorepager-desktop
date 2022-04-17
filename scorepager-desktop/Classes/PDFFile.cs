@@ -5,7 +5,7 @@ using Apitron.PDF.Rasterizer;
 using Apitron.PDF.Rasterizer.Configuration;
 
 namespace scorepager_desktop.Classes {
-	class PDFFile {
+	public class PDFFile {
 		private Score score;
 		private List<Page> pages = new List<Page>();
 		private int pageCount = 0;
@@ -13,25 +13,9 @@ namespace scorepager_desktop.Classes {
 		public int PageCount { get => pageCount; }
 		public List<Page> Pages { get => pages; }
 
-		//Doesn't work, temporary solution to build project
-		public PDFFile(string score) {
-			using (FileStream fs = new FileStream(score, FileMode.Open))
-			using (Document document = new Document(fs)) {
-				for (int i = 0; i < document.Pages.Count; i++) {
-					Bitmap bitmap = document.Pages[i].Render((int)document.Pages[i].Width, (int)document.Pages[i].Height, new RenderingSettings());
-					Page page = new Page(
-						bitmap,
-						++pageCount,
-						new Layer(null, Structures.LayerOwner.USER)
-					);
-					pages.Add(page);
-				}
-			}
-		}
-
 		public PDFFile(Score score) {
 			this.score = score;
-			using (FileStream fs = new FileStream(this.score.StorageFolder + @"\score.pdf", FileMode.Open))
+			using (FileStream fs = new FileStream(this.score.Url, FileMode.Open))
 			using (Document document = new Document(fs)) {
 				for (int i = 0; i < document.Pages.Count; i++) {
 					Bitmap bitmap = document.Pages[i].Render((int)document.Pages[i].Width, (int)document.Pages[i].Height, new RenderingSettings());
@@ -67,7 +51,7 @@ namespace scorepager_desktop.Classes {
 		}
 
 		public void Save() {
-			foreach (Page item in pages) StorageManager.SaveLayerForScore(score, item.Number, item.Bitmap);
+			foreach (Page item in pages) StorageManager.SaveLayerForScore(score, item.Number, item.GetUserLayer());
 		}
 	}
 }
