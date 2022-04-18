@@ -11,6 +11,7 @@ namespace scorepager_desktop.Classes {
 		private int pageCount = 0;
 
 		public int PageCount { get => pageCount; }
+
 		public List<Page> Pages { get => pages; }
 
 		public PDFFile(Score score) {

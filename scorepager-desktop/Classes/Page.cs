@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace scorepager_desktop.Classes {
 	public class Page {
@@ -12,6 +7,7 @@ namespace scorepager_desktop.Classes {
 		private Layer userLayer;
 
 		public Bitmap Bitmap { get => bitmap; }
+
 		public int Number { get => number; }
 
 		public Page(Bitmap bitmap, int number, Layer userLayer) {

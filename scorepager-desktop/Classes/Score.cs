@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace scorepager_desktop.Classes {
+﻿namespace scorepager_desktop.Classes {
 	public class Score {
 		private string composer;
 		private string title;
@@ -14,15 +8,19 @@ namespace scorepager_desktop.Classes {
 		private long timestamp;
 
 		public string Composer { get => composer; }
+
 		public string Title { get => title; }
+
 		public string StorageFolder { get => storageFolder; set => storageFolder = value; }
+
 		public string Url { get => url; set => url = value; }
+
 		public bool Rented { get => rented; set => rented = value; }
+
 		public long RentDate {
 			get => timestamp;
 			set { if (!rented) timestamp = value; }
 		} 
-
 
 		public Score(string composer, string title, string storageFolder, string url, bool rented = false, long timestamp = 0) {
 			this.composer = composer;

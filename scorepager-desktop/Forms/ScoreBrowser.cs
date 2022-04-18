@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using scorepager_desktop.Classes;
@@ -16,6 +11,7 @@ namespace scorepager_desktop.Forms {
 		private List<Score> scoresLocal = new List<Score>();
 		private FirebaseClient client;
 		Task<List<Score>> res;
+
 		public ScoreBrowser() {
 			InitializeComponent();
 			client = FirebaseClient.GetInstance();

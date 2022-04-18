@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using scorepager_desktop.Structures;
 
@@ -46,7 +41,6 @@ namespace scorepager_desktop.UserControls {
 			CreateButton(Properties.Resources.icon_sharp, "sharp");
 		}
 
-
 		public override void ResizeControl(Size size) {
 			this.Size = size;
 			int widthSize = (int)Math.Round((double)(mainFlowLayoutPanel.Width - 20) / 8);
@@ -72,6 +66,5 @@ namespace scorepager_desktop.UserControls {
 			else if (btn.Tag.ToString() == "sharp") type = SymbolType.SHARP;
 			else type = SymbolType.NONE;
 		}
-
 	}
 }

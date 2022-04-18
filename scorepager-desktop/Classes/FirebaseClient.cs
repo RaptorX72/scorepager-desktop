@@ -2,9 +2,7 @@
 using Google.Cloud.Firestore;
 using Firebase.Auth;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Collections.Generic;
-using System.Net;
 
 namespace scorepager_desktop.Classes {
 	class FirebaseClient {
