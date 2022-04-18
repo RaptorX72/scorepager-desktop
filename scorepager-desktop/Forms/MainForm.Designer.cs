@@ -411,14 +411,16 @@ namespace scorepager_desktop.Forms {
 			// tableLayoutPanel7
 			// 
 			this.tableLayoutPanel7.AutoScroll = true;
+			this.tableLayoutPanel7.AutoScrollMargin = new System.Drawing.Size(20, 20);
+			this.tableLayoutPanel7.AutoScrollMinSize = new System.Drawing.Size(10, 10);
 			this.tableLayoutPanel7.ColumnCount = 1;
-			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel7.Controls.Add(this.canvasPictureBox, 0, 0);
 			this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
 			this.tableLayoutPanel7.Name = "tableLayoutPanel7";
 			this.tableLayoutPanel7.RowCount = 1;
-			this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel7.Size = new System.Drawing.Size(908, 497);
 			this.tableLayoutPanel7.TabIndex = 1;
 			// 
@@ -428,6 +430,7 @@ namespace scorepager_desktop.Forms {
 			this.canvasPictureBox.Location = new System.Drawing.Point(404, 223);
 			this.canvasPictureBox.Name = "canvasPictureBox";
 			this.canvasPictureBox.Size = new System.Drawing.Size(100, 50);
+			this.canvasPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
 			this.canvasPictureBox.TabIndex = 0;
 			this.canvasPictureBox.TabStop = false;
 			this.canvasPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.canvasPictureBox_MouseDown);
@@ -459,14 +462,14 @@ namespace scorepager_desktop.Forms {
 			// closeScoresToolStripMenuItem
 			// 
 			this.closeScoresToolStripMenuItem.Name = "closeScoresToolStripMenuItem";
-			this.closeScoresToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+			this.closeScoresToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
 			this.closeScoresToolStripMenuItem.Text = "Save score";
 			this.closeScoresToolStripMenuItem.Click += new System.EventHandler(this.closeScoresToolStripMenuItem_Click);
 			// 
 			// discardScoreToolStripMenuItem
 			// 
 			this.discardScoreToolStripMenuItem.Name = "discardScoreToolStripMenuItem";
-			this.discardScoreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.discardScoreToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
 			this.discardScoreToolStripMenuItem.Text = "Discard score";
 			this.discardScoreToolStripMenuItem.Click += new System.EventHandler(this.discardScoreToolStripMenuItem_Click);
 			// 
@@ -482,7 +485,7 @@ namespace scorepager_desktop.Forms {
 			// 
 			this.generalSettingsToolStripMenuItem.Enabled = false;
 			this.generalSettingsToolStripMenuItem.Name = "generalSettingsToolStripMenuItem";
-			this.generalSettingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.generalSettingsToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
 			this.generalSettingsToolStripMenuItem.Text = "General settings";
 			// 
 			// accountToolStripMenuItem
@@ -496,7 +499,7 @@ namespace scorepager_desktop.Forms {
 			// logOutToolStripMenuItem
 			// 
 			this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-			this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.logOutToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
 			this.logOutToolStripMenuItem.Text = "Log out";
 			this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
 			// 
@@ -532,6 +535,7 @@ namespace scorepager_desktop.Forms {
 			this.tableLayoutPanel8.ResumeLayout(false);
 			this.tableLayoutPanel8.PerformLayout();
 			this.tableLayoutPanel7.ResumeLayout(false);
+			this.tableLayoutPanel7.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).EndInit();
 			this.mainFormMenuStrip.ResumeLayout(false);
 			this.mainFormMenuStrip.PerformLayout();
