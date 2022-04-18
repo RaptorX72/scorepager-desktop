@@ -24,7 +24,7 @@ namespace scorepager_desktop.Classes {
 				API_KEY = sr.ReadLine();
 			}
 			Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path + "firestoredb.json");
-			db = FirestoreDb.Create("scorepagerprivatedesktop");
+			db = FirestoreDb.Create("kottatar-szte");
 		}
 
 		public static FirebaseClient GetInstance() {
