@@ -257,10 +257,10 @@ namespace scorepager_desktop.Forms {
             0,
             0,
             0});
-			this.widthNumericUpDown.Name = "widthNumericUpDown";
-			this.widthNumericUpDown.Size = new System.Drawing.Size(53, 20);
-			this.widthNumericUpDown.TabIndex = 1;
-			this.widthNumericUpDown.Value = new decimal(new int[] {
+            this.widthNumericUpDown.Name = "widthNumericUpDown";
+            this.widthNumericUpDown.Size = new System.Drawing.Size(53, 20);
+            this.widthNumericUpDown.TabIndex = 1;
+            this.widthNumericUpDown.Value = new decimal(new int[] {
             10,
             0,
             0,
@@ -443,15 +443,15 @@ namespace scorepager_desktop.Forms {
             this.settingsToolStripMenuItem,
             this.accountToolStripMenuItem,
             this.exitToolStripMenuItem});
-			this.mainFormMenuStrip.Location = new System.Drawing.Point(0, 0);
-			this.mainFormMenuStrip.Name = "mainFormMenuStrip";
-			this.mainFormMenuStrip.Size = new System.Drawing.Size(1064, 24);
-			this.mainFormMenuStrip.TabIndex = 1;
-			this.mainFormMenuStrip.Text = "menuStrip1";
-			// 
-			// fileToolStripMenuItem
-			// 
-			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainFormMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.mainFormMenuStrip.Name = "mainFormMenuStrip";
+            this.mainFormMenuStrip.Size = new System.Drawing.Size(1064, 24);
+            this.mainFormMenuStrip.TabIndex = 1;
+            this.mainFormMenuStrip.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.browseScoresToolStripMenuItem,
             this.closeScoresToolStripMenuItem,
             this.discardScoreToolStripMenuItem});
@@ -482,19 +482,19 @@ namespace scorepager_desktop.Forms {
 			// 
 			this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.generalSettingsToolStripMenuItem});
-			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-			this.settingsToolStripMenuItem.Text = "Settings";
-			// 
-			// generalSettingsToolStripMenuItem
-			// 
-			this.generalSettingsToolStripMenuItem.Name = "generalSettingsToolStripMenuItem";
-			this.generalSettingsToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-			this.generalSettingsToolStripMenuItem.Text = "General settings";
-			// 
-			// accountToolStripMenuItem
-			// 
-			this.accountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // generalSettingsToolStripMenuItem
+            // 
+            this.generalSettingsToolStripMenuItem.Name = "generalSettingsToolStripMenuItem";
+            this.generalSettingsToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.generalSettingsToolStripMenuItem.Text = "General settings";
+            // 
+            // accountToolStripMenuItem
+            // 
+            this.accountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.accountSettingsToolStripMenuItem,
             this.logOutToolStripMenuItem});
 			this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";

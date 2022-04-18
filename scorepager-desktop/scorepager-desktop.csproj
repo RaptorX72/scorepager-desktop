@@ -303,6 +303,12 @@
     <Compile Include="UserControls\SymbolSelector.Designer.cs">
       <DependentUpon>SymbolSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\TextSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TextSelector.Designer.cs">
+      <DependentUpon>TextSelector.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -324,6 +330,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\SymbolSelector.resx">
       <DependentUpon>SymbolSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TextSelector.resx">
+      <DependentUpon>TextSelector.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
