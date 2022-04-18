@@ -9,6 +9,8 @@ using scorepager_desktop.UserControls;
 
 namespace scorepager_desktop.Forms {
 	public partial class MainForm : Form {
+		private FirebaseClient client;
+
 		private PDFFile file;
 		private Page currentPage;
 		private int currentPageNumber = 0;
@@ -29,6 +31,7 @@ namespace scorepager_desktop.Forms {
 
 		private bool canPaint = false;
 		private bool isTyping = false;
+		private bool discardChanges = false;
 
 		#region UserControls
 		List<MasterUserControl> userControls = new List<MasterUserControl>() {
@@ -38,6 +41,8 @@ namespace scorepager_desktop.Forms {
 		#endregion
 		public MainForm(PDFFile file) {
 			InitializeComponent();
+
+			client = FirebaseClient.GetInstance();
 
 			textBoxCanvasText = new TextBox();
 			textBoxCanvasText.GotFocus += OnFocus;
@@ -99,6 +104,7 @@ namespace scorepager_desktop.Forms {
 					InsertStringToCanvas(textBoxCanvasText.Text);
 					SetBufferImage(canvasPictureBox.Image);
 					isTyping = true;
+					currentPage.PageEdited = true;
 				} else {
 					textBoxCanvasText.Focus();
 					isTyping = true;
@@ -123,6 +129,7 @@ namespace scorepager_desktop.Forms {
 						e.Location.Y - (int)widthNumericUpDown.Value / 2
 					)
 				);
+				currentPage.PageEdited = true;
 				canvasPictureBox.Refresh();
 			} else {
 				currentPoints.Clear();
@@ -166,6 +173,7 @@ namespace scorepager_desktop.Forms {
 						pen.EndCap = LineCap.Round;
 						graphics.DrawLines(pen, currentPoints.ToArray());
 					}
+					currentPage.PageEdited = true;
 				}
 				path.Reset();
 				currentPoints.Clear();
@@ -177,50 +185,48 @@ namespace scorepager_desktop.Forms {
 			drawType = DrawType.PEN;
 			graphics.CompositingMode = CompositingMode.SourceOver;
 			LoadUCToToolbarPanel();
+			SetGlobalColor();
 		}
 
 		private void textSelectButton_Click(object sender, EventArgs e) {
 			drawType = DrawType.TEXT;
 			graphics.CompositingMode = CompositingMode.SourceOver;
 			LoadUCToToolbarPanel();
+			SetGlobalColor();
 		}
 
 		private void eraserSelectButton_Click(object sender, EventArgs e) {
 			drawType = DrawType.ERASER;
 			graphics.CompositingMode = CompositingMode.SourceCopy;
 			LoadUCToToolbarPanel();
+			SetGlobalColor();
 		}
 
 		private void highLighterSelectButton_Click(object sender, EventArgs e) {
 			drawType = DrawType.HIGHLIGHTER;
 			graphics.CompositingMode = CompositingMode.SourceOver;
 			LoadUCToToolbarPanel();
+			SetGlobalColor();
 		}
 
 		private void symbolSelectButton_Click(object sender, EventArgs e) {
 			drawType = DrawType.SYMBOL;
 			graphics.CompositingMode = CompositingMode.SourceOver;
 			LoadUCToToolbarPanel();
+			SetGlobalColor();
 		}
 
 		private void opacityTrackBar_ValueChanged(object sender, EventArgs e) {
-			SetGlobalColorOpacity();
+			SetGlobalColor();
 		}
 
-		private void SetGlobalColor(Color _color) {
-			color = Color.FromArgb(opacityTrackBar.Value, _color);
+		private void SetGlobalColor() {
+			if (drawType == DrawType.HIGHLIGHTER) color = Color.FromArgb(opacityTrackBar.Value, color);
+			else color = Color.FromArgb(255, color);
 			colorPreviewPanel.BackColor = color;
 			solidBrush.Color = color;
 			pen.Brush = solidBrush;
 			pen.Width = Convert.ToInt32(widthNumericUpDown.Value);
-		}
-
-		private void SetGlobalColorOpacity() {
-			SetGlobalColor(color);
-		}
-
-		private void canvasPictureBox_Paint(object sender, PaintEventArgs e) {
-
 		}
 
 		private void widthNumericUpDown_ValueChanged(object sender, EventArgs e) {
@@ -230,7 +236,10 @@ namespace scorepager_desktop.Forms {
 		private void colorPreviewPanel_MouseClick(object sender, MouseEventArgs e) {
 			ColorDialog cd = new ColorDialog();
 			cd.Color = color;
-			if (cd.ShowDialog() == DialogResult.OK) SetGlobalColor(cd.Color);
+			if (cd.ShowDialog() == DialogResult.OK) {
+				color = cd.Color;
+				SetGlobalColor();
+			}
 		}
 
 		private Image ResizeImage(Image imgToResize) {
@@ -315,7 +324,40 @@ namespace scorepager_desktop.Forms {
 		private void closeScoresToolStripMenuItem_Click(object sender, EventArgs e) {
 			SetCurrentPageAndLayer(currentPageNumber);
 			file.Save();
+			file.Pages.ForEach(item => { item.PageEdited = false; });
 			MessageBox.Show("Changes saved!");
+		}
+
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
+			if (!client.LoggedIn || discardChanges) return;
+			SetCurrentPageAndLayer(currentPageNumber);
+			bool unsavedChanges = currentPage.PageEdited;
+			if (!unsavedChanges) {
+				foreach (Page page in file.Pages) {
+					if (page.PageEdited) {
+						unsavedChanges = true;
+						break;
+					}
+				}
+			}
+			if (unsavedChanges) {
+				DialogResult res = MessageBox.Show("You have unsaved changes! Would you like to exit without saving?", "Warning", MessageBoxButtons.YesNo);
+				if (res == DialogResult.No) e.Cancel = true;
+			}
+		}
+
+		private void logOutToolStripMenuItem_Click(object sender, EventArgs e) {
+			client.Logout();
+			this.Close();
+		}
+
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
+			Environment.Exit(0);
+		}
+
+		private void discardScoreToolStripMenuItem_Click(object sender, EventArgs e) {
+			discardChanges = true;
+			this.Close();
 		}
 	}
 }

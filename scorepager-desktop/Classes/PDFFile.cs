@@ -52,7 +52,9 @@ namespace scorepager_desktop.Classes {
 		}
 
 		public void Save() {
-			foreach (Page item in pages) StorageManager.SaveLayerForScore(score, item.Number, item.GetUserLayer());
+			foreach (Page item in pages)
+				if (item.PageEdited)
+					StorageManager.SaveLayerForScore(score, item.Number, item.GetUserLayer());
 		}
 	}
 }

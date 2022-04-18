@@ -27,16 +27,17 @@
 			this.AvailableScoresListBox = new System.Windows.Forms.ListBox();
 			this.buttonLoad = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.label1 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.labelEndDate = new System.Windows.Forms.Label();
+			this.labelLeased = new System.Windows.Forms.Label();
+			this.labelTitle = new System.Windows.Forms.Label();
+			this.labelComposer = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.labelComposer = new System.Windows.Forms.Label();
-			this.labelTitle = new System.Windows.Forms.Label();
-			this.labelLeased = new System.Windows.Forms.Label();
-			this.labelEndDate = new System.Windows.Forms.Label();
 			this.resultTimer = new System.Windows.Forms.Timer(this.components);
+			this.buttonLogout = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -71,17 +72,6 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Information";
 			// 
-			// label1
-			// 
-			this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(5, 17);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(70, 16);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Composer";
-			// 
 			// tableLayoutPanel1
 			// 
 			this.tableLayoutPanel1.ColumnCount = 2;
@@ -107,6 +97,61 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(268, 258);
 			this.tableLayoutPanel1.TabIndex = 0;
+			// 
+			// labelEndDate
+			// 
+			this.labelEndDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.labelEndDate.AutoSize = true;
+			this.labelEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelEndDate.Location = new System.Drawing.Point(146, 170);
+			this.labelEndDate.Name = "labelEndDate";
+			this.labelEndDate.Size = new System.Drawing.Size(56, 16);
+			this.labelEndDate.TabIndex = 7;
+			this.labelEndDate.Text = "Loading";
+			// 
+			// labelLeased
+			// 
+			this.labelLeased.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.labelLeased.AutoSize = true;
+			this.labelLeased.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelLeased.Location = new System.Drawing.Point(146, 119);
+			this.labelLeased.Name = "labelLeased";
+			this.labelLeased.Size = new System.Drawing.Size(56, 16);
+			this.labelLeased.TabIndex = 6;
+			this.labelLeased.Text = "Loading";
+			// 
+			// labelTitle
+			// 
+			this.labelTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.labelTitle.AutoSize = true;
+			this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelTitle.Location = new System.Drawing.Point(146, 68);
+			this.labelTitle.Name = "labelTitle";
+			this.labelTitle.Size = new System.Drawing.Size(56, 16);
+			this.labelTitle.TabIndex = 5;
+			this.labelTitle.Text = "Loading";
+			// 
+			// labelComposer
+			// 
+			this.labelComposer.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.labelComposer.AutoSize = true;
+			this.labelComposer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelComposer.Location = new System.Drawing.Point(146, 17);
+			this.labelComposer.Name = "labelComposer";
+			this.labelComposer.Size = new System.Drawing.Size(56, 16);
+			this.labelComposer.TabIndex = 4;
+			this.labelComposer.Text = "Loading";
+			// 
+			// label1
+			// 
+			this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(5, 17);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(70, 16);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "Composer";
 			// 
 			// label2
 			// 
@@ -141,67 +186,35 @@
 			this.label4.TabIndex = 3;
 			this.label4.Text = "End date";
 			// 
-			// labelComposer
-			// 
-			this.labelComposer.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.labelComposer.AutoSize = true;
-			this.labelComposer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelComposer.Location = new System.Drawing.Point(139, 17);
-			this.labelComposer.Name = "labelComposer";
-			this.labelComposer.Size = new System.Drawing.Size(70, 16);
-			this.labelComposer.TabIndex = 4;
-			this.labelComposer.Text = "Composer";
-			// 
-			// labelTitle
-			// 
-			this.labelTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.labelTitle.AutoSize = true;
-			this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelTitle.Location = new System.Drawing.Point(139, 68);
-			this.labelTitle.Name = "labelTitle";
-			this.labelTitle.Size = new System.Drawing.Size(70, 16);
-			this.labelTitle.TabIndex = 5;
-			this.labelTitle.Text = "Composer";
-			// 
-			// labelLeased
-			// 
-			this.labelLeased.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.labelLeased.AutoSize = true;
-			this.labelLeased.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelLeased.Location = new System.Drawing.Point(139, 119);
-			this.labelLeased.Name = "labelLeased";
-			this.labelLeased.Size = new System.Drawing.Size(70, 16);
-			this.labelLeased.TabIndex = 6;
-			this.labelLeased.Text = "Composer";
-			// 
-			// labelEndDate
-			// 
-			this.labelEndDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.labelEndDate.AutoSize = true;
-			this.labelEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelEndDate.Location = new System.Drawing.Point(139, 170);
-			this.labelEndDate.Name = "labelEndDate";
-			this.labelEndDate.Size = new System.Drawing.Size(70, 16);
-			this.labelEndDate.TabIndex = 7;
-			this.labelEndDate.Text = "Composer";
-			// 
 			// resultTimer
 			// 
 			this.resultTimer.Enabled = true;
 			this.resultTimer.Interval = 500;
 			this.resultTimer.Tick += new System.EventHandler(this.resultTimer_Tick);
 			// 
+			// buttonLogout
+			// 
+			this.buttonLogout.Location = new System.Drawing.Point(597, 12);
+			this.buttonLogout.Name = "buttonLogout";
+			this.buttonLogout.Size = new System.Drawing.Size(75, 23);
+			this.buttonLogout.TabIndex = 3;
+			this.buttonLogout.Text = "Logout";
+			this.buttonLogout.UseVisualStyleBackColor = true;
+			this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
+			// 
 			// ScoreBrowser
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(684, 311);
+			this.Controls.Add(this.buttonLogout);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.AvailableScoresListBox);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "ScoreBrowser";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "ScoreBrowser";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScoreBrowser_FormClosing);
 			this.groupBox1.ResumeLayout(false);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
@@ -224,5 +237,6 @@
 		private System.Windows.Forms.Label labelTitle;
 		private System.Windows.Forms.Label labelComposer;
 		private System.Windows.Forms.Timer resultTimer;
+		private System.Windows.Forms.Button buttonLogout;
 	}
 }

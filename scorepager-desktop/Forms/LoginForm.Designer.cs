@@ -28,27 +28,33 @@ namespace scorepager_desktop.Forms {
 			this.passWordMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
 			this.loginButton = new System.Windows.Forms.Button();
 			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// emailTextBox
 			// 
-			this.emailTextBox.Location = new System.Drawing.Point(12, 12);
+			this.emailTextBox.Location = new System.Drawing.Point(12, 121);
 			this.emailTextBox.Name = "emailTextBox";
 			this.emailTextBox.Size = new System.Drawing.Size(200, 20);
 			this.emailTextBox.TabIndex = 0;
 			// 
 			// passWordMaskedTextBox
 			// 
-			this.passWordMaskedTextBox.Location = new System.Drawing.Point(12, 38);
+			this.passWordMaskedTextBox.Location = new System.Drawing.Point(12, 163);
 			this.passWordMaskedTextBox.Name = "passWordMaskedTextBox";
+			this.passWordMaskedTextBox.PasswordChar = '*';
 			this.passWordMaskedTextBox.Size = new System.Drawing.Size(200, 20);
 			this.passWordMaskedTextBox.TabIndex = 1;
+			this.passWordMaskedTextBox.UseSystemPasswordChar = true;
 			// 
 			// loginButton
 			// 
-			this.loginButton.Location = new System.Drawing.Point(12, 64);
+			this.loginButton.Location = new System.Drawing.Point(12, 191);
 			this.loginButton.Name = "loginButton";
-			this.loginButton.Size = new System.Drawing.Size(200, 23);
+			this.loginButton.Size = new System.Drawing.Size(200, 35);
 			this.loginButton.TabIndex = 2;
 			this.loginButton.Text = "Login";
 			this.loginButton.UseVisualStyleBackColor = true;
@@ -57,18 +63,47 @@ namespace scorepager_desktop.Forms {
 			// linkLabel1
 			// 
 			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Location = new System.Drawing.Point(101, 106);
+			this.linkLabel1.Location = new System.Drawing.Point(101, 232);
 			this.linkLabel1.Name = "linkLabel1";
 			this.linkLabel1.Size = new System.Drawing.Size(111, 13);
 			this.linkLabel1.TabIndex = 3;
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.Text = "Register new account";
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(12, 105);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(74, 13);
+			this.label1.TabIndex = 4;
+			this.label1.Text = "e-mail address";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(12, 147);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(53, 13);
+			this.label2.TabIndex = 5;
+			this.label2.Text = "Password";
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Location = new System.Drawing.Point(79, 20);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(64, 64);
+			this.pictureBox1.TabIndex = 6;
+			this.pictureBox1.TabStop = false;
+			// 
 			// LoginForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(230, 130);
+			this.ClientSize = new System.Drawing.Size(224, 261);
+			this.Controls.Add(this.pictureBox1);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.linkLabel1);
 			this.Controls.Add(this.loginButton);
 			this.Controls.Add(this.passWordMaskedTextBox);
@@ -77,6 +112,7 @@ namespace scorepager_desktop.Forms {
 			this.Name = "LoginForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "LoginForm";
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -88,5 +124,8 @@ namespace scorepager_desktop.Forms {
 		private System.Windows.Forms.MaskedTextBox passWordMaskedTextBox;
 		private System.Windows.Forms.Button loginButton;
 		private System.Windows.Forms.LinkLabel linkLabel1;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.PictureBox pictureBox1;
 	}
 }

@@ -51,13 +51,11 @@ namespace scorepager_desktop.Forms {
 			this.canvasPictureBox = new System.Windows.Forms.PictureBox();
 			this.mainFormMenuStrip = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.browseScoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.closeScoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.discardScoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.generalSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.accountSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.mainTableLayoutPanel.SuspendLayout();
@@ -257,10 +255,10 @@ namespace scorepager_desktop.Forms {
             0,
             0,
             0});
-            this.widthNumericUpDown.Name = "widthNumericUpDown";
-            this.widthNumericUpDown.Size = new System.Drawing.Size(53, 20);
-            this.widthNumericUpDown.TabIndex = 1;
-            this.widthNumericUpDown.Value = new decimal(new int[] {
+			this.widthNumericUpDown.Name = "widthNumericUpDown";
+			this.widthNumericUpDown.Size = new System.Drawing.Size(53, 20);
+			this.widthNumericUpDown.TabIndex = 1;
+			this.widthNumericUpDown.Value = new decimal(new int[] {
             10,
             0,
             0,
@@ -443,32 +441,25 @@ namespace scorepager_desktop.Forms {
             this.settingsToolStripMenuItem,
             this.accountToolStripMenuItem,
             this.exitToolStripMenuItem});
-            this.mainFormMenuStrip.Location = new System.Drawing.Point(0, 0);
-            this.mainFormMenuStrip.Name = "mainFormMenuStrip";
-            this.mainFormMenuStrip.Size = new System.Drawing.Size(1064, 24);
-            this.mainFormMenuStrip.TabIndex = 1;
-            this.mainFormMenuStrip.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.browseScoresToolStripMenuItem,
+			this.mainFormMenuStrip.Location = new System.Drawing.Point(0, 0);
+			this.mainFormMenuStrip.Name = "mainFormMenuStrip";
+			this.mainFormMenuStrip.Size = new System.Drawing.Size(1064, 24);
+			this.mainFormMenuStrip.TabIndex = 1;
+			this.mainFormMenuStrip.Text = "menuStrip1";
+			// 
+			// fileToolStripMenuItem
+			// 
+			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.closeScoresToolStripMenuItem,
             this.discardScoreToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
 			this.fileToolStripMenuItem.Text = "Scores";
 			// 
-			// browseScoresToolStripMenuItem
-			// 
-			this.browseScoresToolStripMenuItem.Name = "browseScoresToolStripMenuItem";
-			this.browseScoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.browseScoresToolStripMenuItem.Text = "Browse scores";
-			// 
 			// closeScoresToolStripMenuItem
 			// 
 			this.closeScoresToolStripMenuItem.Name = "closeScoresToolStripMenuItem";
-			this.closeScoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.closeScoresToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
 			this.closeScoresToolStripMenuItem.Text = "Save score";
 			this.closeScoresToolStripMenuItem.Click += new System.EventHandler(this.closeScoresToolStripMenuItem_Click);
 			// 
@@ -477,47 +468,44 @@ namespace scorepager_desktop.Forms {
 			this.discardScoreToolStripMenuItem.Name = "discardScoreToolStripMenuItem";
 			this.discardScoreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.discardScoreToolStripMenuItem.Text = "Discard score";
+			this.discardScoreToolStripMenuItem.Click += new System.EventHandler(this.discardScoreToolStripMenuItem_Click);
 			// 
 			// settingsToolStripMenuItem
 			// 
 			this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.generalSettingsToolStripMenuItem});
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.settingsToolStripMenuItem.Text = "Settings";
-            // 
-            // generalSettingsToolStripMenuItem
-            // 
-            this.generalSettingsToolStripMenuItem.Name = "generalSettingsToolStripMenuItem";
-            this.generalSettingsToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.generalSettingsToolStripMenuItem.Text = "General settings";
-            // 
-            // accountToolStripMenuItem
-            // 
-            this.accountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.accountSettingsToolStripMenuItem,
+			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+			this.settingsToolStripMenuItem.Text = "Settings";
+			// 
+			// generalSettingsToolStripMenuItem
+			// 
+			this.generalSettingsToolStripMenuItem.Enabled = false;
+			this.generalSettingsToolStripMenuItem.Name = "generalSettingsToolStripMenuItem";
+			this.generalSettingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.generalSettingsToolStripMenuItem.Text = "General settings";
+			// 
+			// accountToolStripMenuItem
+			// 
+			this.accountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.logOutToolStripMenuItem});
 			this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
 			this.accountToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
 			this.accountToolStripMenuItem.Text = "Account";
 			// 
-			// accountSettingsToolStripMenuItem
-			// 
-			this.accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
-			this.accountSettingsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-			this.accountSettingsToolStripMenuItem.Text = "Account settings";
-			// 
 			// logOutToolStripMenuItem
 			// 
 			this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-			this.logOutToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+			this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.logOutToolStripMenuItem.Text = "Log out";
+			this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
 			this.exitToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
 			this.exitToolStripMenuItem.Text = "Exit";
+			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
@@ -528,6 +516,7 @@ namespace scorepager_desktop.Forms {
 			this.Controls.Add(this.mainFormMenuStrip);
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.mainTableLayoutPanel.ResumeLayout(false);
 			this.toolBarTableLayoutPanel.ResumeLayout(false);
 			this.tableLayoutPanel1.ResumeLayout(false);
@@ -579,13 +568,11 @@ namespace scorepager_desktop.Forms {
 		private System.Windows.Forms.Panel colorPreviewPanel;
 		private System.Windows.Forms.MenuStrip mainFormMenuStrip;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem browseScoresToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem closeScoresToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem discardScoreToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem generalSettingsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem accountToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem accountSettingsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
 		private System.Windows.Forms.Panel toolBarPanel;

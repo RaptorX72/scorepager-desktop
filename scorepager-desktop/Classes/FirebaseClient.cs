@@ -12,7 +12,7 @@ namespace scorepager_desktop.Classes {
 		private static bool loggedIn;
 		private FirestoreDb db;
 
-		public bool LoggedIn { get { return this.LoggedIn; } }
+		public bool LoggedIn { get { return loggedIn; } }
 
 		public string UserID { get { return loggedIn ? user.LocalId : null; } }
 
@@ -23,6 +23,7 @@ namespace scorepager_desktop.Classes {
 			}
 			Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path + "firestoredb.json");
 			db = FirestoreDb.Create("kottatar-szte");
+			loggedIn = false;
 		}
 
 		public static FirebaseClient GetInstance() {

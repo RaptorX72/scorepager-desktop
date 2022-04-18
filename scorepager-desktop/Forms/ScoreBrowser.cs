@@ -78,14 +78,22 @@ namespace scorepager_desktop.Forms {
 				MainForm mf = new MainForm(file);
 				this.Hide();
 				mf.ShowDialog();
-				//
 				mf.Dispose();
-				this.Show();
+				if (client.LoggedIn) this.Show();
+				else this.Close();
 			} else {
 				scores[AvailableScoresListBox.SelectedIndex] = StorageManager.DownloadScoreForUser(client.UserID, currentscore);
-				MessageBox.Show(scores[AvailableScoresListBox.SelectedIndex].ToString());
 				FillListBox();
 			}
+		}
+
+		private void buttonLogout_Click(object sender, EventArgs e) {
+			client.Logout();
+			this.Close();
+		}
+
+		private void ScoreBrowser_FormClosing(object sender, FormClosingEventArgs e) {
+			if (client.LoggedIn) Environment.Exit(0);
 		}
 	}
 }
