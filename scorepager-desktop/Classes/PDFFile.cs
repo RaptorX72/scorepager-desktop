@@ -52,9 +52,11 @@ namespace scorepager_desktop.Classes {
 		}
 
 		public void Save() {
+			FirebaseClient client = FirebaseClient.GetInstance();
 			foreach (Page item in pages)
 				if (item.PageEdited)
 					StorageManager.SaveLayerForScore(score, item.Number, item.GetUserLayer());
+			client.UploadBitmaps(client.UserID, $"{score.Composer}{score.Title}", pages);
 		}
 	}
 }

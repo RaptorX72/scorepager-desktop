@@ -12,6 +12,8 @@ namespace scorepager_desktop.Classes {
 		private static string appPath;
 		private static string appPathUsers;
 
+		public static string AppPathUsers { get { return appPathUsers; } }
+
 		public static void Initialize() {
 			appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 			appPath = appDataPath + @"\ScorePager";
@@ -60,6 +62,7 @@ namespace scorepager_desktop.Classes {
 			using (System.Net.WebClient download = new System.Net.WebClient()) {
 				download.DownloadFile(score.Url, scorePath + PDF_NAME);
 			}
+			FirebaseClient.GetInstance().DownloadBitmaps(uid, score);
 			return new Score(score.Composer, score.Title, scorePath, scorePath + PDF_NAME, true, rentDate);
 		}
 

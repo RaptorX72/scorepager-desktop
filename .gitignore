@@ -398,3 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 /scorepager-desktop/Resources/JSON/firestoredb.json
 /scorepager-desktop/Resources/JSON/apikey.txt
+/scorepager-desktop/Resources/JSON/storage.txt

@@ -53,8 +53,8 @@
     <Reference Include="Google.Api.Gax.Grpc.GrpcCore, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3ec5ea7f18953e47, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Api.Gax.Grpc.GrpcCore.3.6.0\lib\net461\Google.Api.Gax.Grpc.GrpcCore.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Api.Gax.Rest, Version=3.2.0.0, Culture=neutral, PublicKeyToken=3ec5ea7f18953e47, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Api.Gax.Rest.3.2.0\lib\net461\Google.Api.Gax.Rest.dll</HintPath>
+    <Reference Include="Google.Api.Gax.Rest, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3ec5ea7f18953e47, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Api.Gax.Rest.3.6.0\lib\net461\Google.Api.Gax.Rest.dll</HintPath>
     </Reference>
     <Reference Include="Google.Apis, Version=1.55.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Apis.1.55.0\lib\net45\Google.Apis.dll</HintPath>
@@ -71,11 +71,17 @@
     <Reference Include="Google.Apis.PlatformServices, Version=1.55.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Apis.1.55.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Apis.Storage.v1, Version=1.55.0.2526, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Storage.v1.1.55.0.2526\lib\net45\Google.Apis.Storage.v1.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Cloud.Firestore, Version=2.5.0.0, Culture=neutral, PublicKeyToken=185c282632e132a0, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Cloud.Firestore.2.5.0\lib\net461\Google.Cloud.Firestore.dll</HintPath>
     </Reference>
     <Reference Include="Google.Cloud.Firestore.V1, Version=2.5.0.0, Culture=neutral, PublicKeyToken=185c282632e132a0, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Cloud.Firestore.V1.2.5.0\lib\net461\Google.Cloud.Firestore.V1.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Cloud.Storage.V1, Version=3.7.0.0, Culture=neutral, PublicKeyToken=185c282632e132a0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Cloud.Storage.V1.3.7.0\lib\net461\Google.Cloud.Storage.V1.dll</HintPath>
     </Reference>
     <Reference Include="Google.LongRunning, Version=2.3.0.0, Culture=neutral, PublicKeyToken=185c282632e132a0, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.LongRunning.2.3.0\lib\net461\Google.LongRunning.dll</HintPath>
@@ -358,6 +364,7 @@
     <Content Include="Resources\Icons\icon_sharp.png" />
     <Content Include="Resources\Icons\icon_violin.png" />
     <Content Include="Resources\JSON\apikey.txt" />
+    <Content Include="Resources\JSON\storage.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Grpc.Core.2.41.0\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.2.41.0\build\net45\Grpc.Core.targets')" />
