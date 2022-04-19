@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using scorepager_desktop.Structures;
+using scorepager_desktop.Classes;
 
 namespace scorepager_desktop.UserControls {
 	public partial class SymbolSelector : MasterUserControl {
@@ -15,34 +16,10 @@ namespace scorepager_desktop.UserControls {
 			InitializeComponent();
 			CreateButton(Properties.Resources.icon_violin, "violin");
 			CreateButton(Properties.Resources.icon_sharp, "sharp");
-			CreateButton(Properties.Resources.icon_violin, "violin");
-			CreateButton(Properties.Resources.icon_sharp, "sharp");
-			CreateButton(Properties.Resources.icon_violin, "violin");
-			CreateButton(Properties.Resources.icon_sharp, "sharp");
-			CreateButton(Properties.Resources.icon_violin, "violin");
-			CreateButton(Properties.Resources.icon_sharp, "sharp");
-
-			CreateButton(Properties.Resources.icon_violin, "violin");
-			CreateButton(Properties.Resources.icon_sharp, "sharp");
-			CreateButton(Properties.Resources.icon_violin, "violin");
-			CreateButton(Properties.Resources.icon_sharp, "sharp");
-			CreateButton(Properties.Resources.icon_violin, "violin");
-			CreateButton(Properties.Resources.icon_sharp, "sharp");
-			CreateButton(Properties.Resources.icon_violin, "violin");
-			CreateButton(Properties.Resources.icon_sharp, "sharp");
-
-			CreateButton(Properties.Resources.icon_violin, "violin");
-			CreateButton(Properties.Resources.icon_sharp, "sharp");
-			CreateButton(Properties.Resources.icon_violin, "violin");
-			CreateButton(Properties.Resources.icon_sharp, "sharp");
-			CreateButton(Properties.Resources.icon_violin, "violin");
-			CreateButton(Properties.Resources.icon_sharp, "sharp");
-			CreateButton(Properties.Resources.icon_violin, "violin");
-			CreateButton(Properties.Resources.icon_sharp, "sharp");
 		}
 
 		public override void ResizeControl(Size size) {
-			this.Size = size;
+			Size = size;
 			int widthSize = (int)Math.Round((double)(mainFlowLayoutPanel.Width - 20) / 8);
 			for (int i = 0; i < buttons.Count; i++) buttons[i].Size = new Size(widthSize, mainFlowLayoutPanel.Height);
 		}
@@ -57,7 +34,7 @@ namespace scorepager_desktop.UserControls {
 			button.Margin = new Padding(0, 0, 0, 0);
 			button.Click += symbolButton_Click;
 			buttons.Add(button);
-			this.mainFlowLayoutPanel.Controls.Add(button);
+			mainFlowLayoutPanel.Controls.Add(button);
 		}
 
 		private void symbolButton_Click(object sender, EventArgs e) {

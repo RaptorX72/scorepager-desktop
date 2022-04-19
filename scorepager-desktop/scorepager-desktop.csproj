@@ -361,8 +361,12 @@
     <Folder Include="Resources\Images\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Icons\eraser.png" />
+    <None Include="Resources\Icons\highlighter.png" />
     <Content Include="Resources\Icons\icon_sharp.png" />
     <Content Include="Resources\Icons\icon_violin.png" />
+    <None Include="Resources\Icons\pen.png" />
+    <None Include="Resources\Icons\typing.png" />
     <Content Include="Resources\JSON\apikey.txt" />
     <Content Include="Resources\JSON\storage.txt" />
   </ItemGroup>

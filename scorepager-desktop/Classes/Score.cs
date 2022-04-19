@@ -11,6 +11,8 @@
 
 		public string Title { get => title; }
 
+		public string CombinedComposerTitle { get => $"{composer}{title}"; }
+
 		public string StorageFolder { get => storageFolder; set => storageFolder = value; }
 
 		public string Url { get => url; set => url = value; }

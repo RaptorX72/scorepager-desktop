@@ -56,7 +56,7 @@ namespace scorepager_desktop.Classes {
 			foreach (Page item in pages)
 				if (item.PageEdited)
 					StorageManager.SaveLayerForScore(score, item.Number, item.GetUserLayer());
-			client.UploadBitmaps(client.UserID, $"{score.Composer}{score.Title}", pages);
+			client.UploadBitmaps(client.UserID, score, pages);
 		}
 	}
 }

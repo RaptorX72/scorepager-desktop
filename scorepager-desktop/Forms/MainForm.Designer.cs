@@ -48,7 +48,6 @@ namespace scorepager_desktop.Forms {
 			this.labelPageCount = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-			this.canvasPictureBox = new System.Windows.Forms.PictureBox();
 			this.mainFormMenuStrip = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.closeScoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +57,7 @@ namespace scorepager_desktop.Forms {
 			this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.canvasPictureBox = new System.Windows.Forms.PictureBox();
 			this.mainTableLayoutPanel.SuspendLayout();
 			this.toolBarTableLayoutPanel.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -71,8 +71,8 @@ namespace scorepager_desktop.Forms {
 			this.tableLayoutPanel6.SuspendLayout();
 			this.tableLayoutPanel8.SuspendLayout();
 			this.tableLayoutPanel7.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).BeginInit();
 			this.mainFormMenuStrip.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// mainTableLayoutPanel
@@ -136,65 +136,70 @@ namespace scorepager_desktop.Forms {
 			// 
 			// symbolSelectButton
 			// 
+			this.symbolSelectButton.BackgroundImage = global::scorepager_desktop.Properties.Resources.icon_violin;
+			this.symbolSelectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.symbolSelectButton.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.symbolSelectButton.Location = new System.Drawing.Point(313, 1);
 			this.symbolSelectButton.Margin = new System.Windows.Forms.Padding(1);
 			this.symbolSelectButton.Name = "symbolSelectButton";
 			this.symbolSelectButton.Size = new System.Drawing.Size(80, 72);
 			this.symbolSelectButton.TabIndex = 4;
-			this.symbolSelectButton.Text = "Symbols";
 			this.symbolSelectButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			this.symbolSelectButton.UseVisualStyleBackColor = true;
 			this.symbolSelectButton.Click += new System.EventHandler(this.symbolSelectButton_Click);
 			// 
 			// highLighterSelectButton
 			// 
+			this.highLighterSelectButton.BackgroundImage = global::scorepager_desktop.Properties.Resources.highlighter;
+			this.highLighterSelectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.highLighterSelectButton.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.highLighterSelectButton.Location = new System.Drawing.Point(235, 1);
 			this.highLighterSelectButton.Margin = new System.Windows.Forms.Padding(1);
 			this.highLighterSelectButton.Name = "highLighterSelectButton";
 			this.highLighterSelectButton.Size = new System.Drawing.Size(76, 72);
 			this.highLighterSelectButton.TabIndex = 3;
-			this.highLighterSelectButton.Text = "Highlight";
 			this.highLighterSelectButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			this.highLighterSelectButton.UseVisualStyleBackColor = true;
 			this.highLighterSelectButton.Click += new System.EventHandler(this.highLighterSelectButton_Click);
 			// 
 			// eraserSelectButton
 			// 
+			this.eraserSelectButton.BackgroundImage = global::scorepager_desktop.Properties.Resources.eraser;
+			this.eraserSelectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.eraserSelectButton.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.eraserSelectButton.Location = new System.Drawing.Point(157, 1);
 			this.eraserSelectButton.Margin = new System.Windows.Forms.Padding(1);
 			this.eraserSelectButton.Name = "eraserSelectButton";
 			this.eraserSelectButton.Size = new System.Drawing.Size(76, 72);
 			this.eraserSelectButton.TabIndex = 2;
-			this.eraserSelectButton.Text = "Eraser";
 			this.eraserSelectButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			this.eraserSelectButton.UseVisualStyleBackColor = true;
 			this.eraserSelectButton.Click += new System.EventHandler(this.eraserSelectButton_Click);
 			// 
 			// textSelectButton
 			// 
+			this.textSelectButton.BackgroundImage = global::scorepager_desktop.Properties.Resources.typing;
+			this.textSelectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.textSelectButton.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.textSelectButton.Location = new System.Drawing.Point(79, 1);
 			this.textSelectButton.Margin = new System.Windows.Forms.Padding(1);
 			this.textSelectButton.Name = "textSelectButton";
 			this.textSelectButton.Size = new System.Drawing.Size(76, 72);
 			this.textSelectButton.TabIndex = 1;
-			this.textSelectButton.Text = "Text";
 			this.textSelectButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			this.textSelectButton.UseVisualStyleBackColor = true;
 			this.textSelectButton.Click += new System.EventHandler(this.textSelectButton_Click);
 			// 
 			// penSelectButton
 			// 
+			this.penSelectButton.BackgroundImage = global::scorepager_desktop.Properties.Resources.pen;
+			this.penSelectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.penSelectButton.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.penSelectButton.Location = new System.Drawing.Point(1, 1);
 			this.penSelectButton.Margin = new System.Windows.Forms.Padding(1);
 			this.penSelectButton.Name = "penSelectButton";
 			this.penSelectButton.Size = new System.Drawing.Size(76, 72);
 			this.penSelectButton.TabIndex = 0;
-			this.penSelectButton.Text = "Pen";
 			this.penSelectButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			this.penSelectButton.UseVisualStyleBackColor = true;
 			this.penSelectButton.Click += new System.EventHandler(this.penSelectButton_Click);
@@ -424,19 +429,6 @@ namespace scorepager_desktop.Forms {
 			this.tableLayoutPanel7.Size = new System.Drawing.Size(908, 501);
 			this.tableLayoutPanel7.TabIndex = 1;
 			// 
-			// canvasPictureBox
-			// 
-			this.canvasPictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.canvasPictureBox.Location = new System.Drawing.Point(404, 225);
-			this.canvasPictureBox.Name = "canvasPictureBox";
-			this.canvasPictureBox.Size = new System.Drawing.Size(100, 50);
-			this.canvasPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			this.canvasPictureBox.TabIndex = 0;
-			this.canvasPictureBox.TabStop = false;
-			this.canvasPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.canvasPictureBox_MouseDown);
-			this.canvasPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.canvasPictureBox_MouseMove);
-			this.canvasPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.canvasPictureBox_MouseUp);
-			// 
 			// mainFormMenuStrip
 			// 
 			this.mainFormMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -510,6 +502,19 @@ namespace scorepager_desktop.Forms {
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
+			// canvasPictureBox
+			// 
+			this.canvasPictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.canvasPictureBox.Location = new System.Drawing.Point(404, 225);
+			this.canvasPictureBox.Name = "canvasPictureBox";
+			this.canvasPictureBox.Size = new System.Drawing.Size(100, 50);
+			this.canvasPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.canvasPictureBox.TabIndex = 0;
+			this.canvasPictureBox.TabStop = false;
+			this.canvasPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.canvasPictureBox_MouseDown);
+			this.canvasPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.canvasPictureBox_MouseMove);
+			this.canvasPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.canvasPictureBox_MouseUp);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -536,9 +541,9 @@ namespace scorepager_desktop.Forms {
 			this.tableLayoutPanel8.PerformLayout();
 			this.tableLayoutPanel7.ResumeLayout(false);
 			this.tableLayoutPanel7.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).EndInit();
 			this.mainFormMenuStrip.ResumeLayout(false);
 			this.mainFormMenuStrip.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

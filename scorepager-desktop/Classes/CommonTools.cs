@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Text;
 
 namespace scorepager_desktop.Classes {
@@ -11,7 +12,7 @@ namespace scorepager_desktop.Classes {
             return res.ToString();
         }
 
-        public static long DateTimeToUnixTimstamp(DateTime dt, int extraSeconds = 0) {
+        public static long DateTimeToUnixTimstamp(int extraSeconds = 0) {
             return DateTimeOffset.Now.ToUnixTimeSeconds() + extraSeconds;
         }
 
@@ -20,5 +21,15 @@ namespace scorepager_desktop.Classes {
             dt = dt.AddSeconds(timestamp);
             return dt;
         }
-	}
+
+        public static Image ResizeImage(Image image, int width, int height) {
+            int w = image.Size.Width;
+            int h = image.Size.Height;
+            float scale = Math.Min(
+                (float)width / (float)image.Width,
+                (float)height / (float)image.Height
+            );
+            return (Image)new Bitmap(image, new Size((int)(image.Width * scale), (int)(image.Height * scale)));
+        }
+    }
 }

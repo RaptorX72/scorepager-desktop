@@ -15,20 +15,26 @@ namespace scorepager_desktop.Forms {
 		}
 
 		private void loginButton_Click(object sender, EventArgs e) {
-			bool success = client.Login(emailTextBox.Text, passWordMaskedTextBox.Text);
-			if (success) {
-				emailTextBox.Clear();
+			if (!client.Login(emailTextBox.Text, passWordMaskedTextBox.Text)) {
+				MessageBox.Show("Incorrect user credentials!");
 				passWordMaskedTextBox.Clear();
-				ScoreBrowser sb = new ScoreBrowser();
-				this.Hide();
-				sb.ShowDialog();
-				sb.Dispose();
-				this.Show();
+				return;
 			}
+			emailTextBox.Clear();
+			passWordMaskedTextBox.Clear();
+			Hide();
+			using (ScoreBrowser sb = new ScoreBrowser()) {
+				sb.ShowDialog();
+			}
+			Show();
 		}
 
 		private void TextBoxTextChanged(object sender, EventArgs e) {
 			loginButton.Enabled = emailTextBox.Text.Length > 0 && passWordMaskedTextBox.Text.Length > 0;
+		}
+
+		private void linkLabelRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
+			System.Diagnostics.Process.Start("https://kottatar-szte.web.app/signup"); 
 		}
 	}
 }

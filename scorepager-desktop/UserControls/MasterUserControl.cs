@@ -5,7 +5,7 @@ namespace scorepager_desktop.UserControls {
 	public partial class MasterUserControl : UserControl {
 		protected bool active = false;
 
-		public bool IsActive { get { return this.active; } }
+		public bool IsActive { get => active; }
 
 		public MasterUserControl() {
 			InitializeComponent();
@@ -16,7 +16,7 @@ namespace scorepager_desktop.UserControls {
 		}
 
 		public virtual void ResizeControl(Size size) {
-			this.Size = size;
+			Size = size;
 		}
 	}
 }

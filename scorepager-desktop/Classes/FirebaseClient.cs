@@ -22,14 +22,14 @@ namespace scorepager_desktop.Classes {
 		public string UserID { get { return loggedIn ? user.LocalId : null; } }
 
 		public FirebaseClient() {
-			string path = AppDomain.CurrentDomain.BaseDirectory + @"..\..\Resources\JSON\";
-			using (StreamReader srB = new StreamReader(path + "storage.txt"))
-			using (StreamReader sr = new StreamReader(path + "apikey.txt")) {
+			string path = $@"{AppDomain.CurrentDomain.BaseDirectory}..\..\Resources\JSON\";
+			using (StreamReader srB = new StreamReader($"{path}storage.txt"))
+			using (StreamReader sr = new StreamReader($"{path}apikey.txt")) {
 				API_KEY = sr.ReadLine();
 				firestoreDBName = srB.ReadLine();
 				storageBucketName = srB.ReadLine();
 			}
-			Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path + "firestoredb.json");
+			Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", $"{path}firestoredb.json");
 			db = FirestoreDb.Create(firestoreDBName);
 			storage = StorageClient.Create();
 			loggedIn = false;
@@ -71,9 +71,9 @@ namespace scorepager_desktop.Classes {
 			return scores;
 		}
 
-		public void UploadBitmaps(string uid, string score, List<Page> pages) {
-			string localPathBase = $@"{StorageManager.AppPathUsers}\{uid}\{score}\layers\";
-			string objectPathBase = $"layers/{uid}/{score}/";
+		public void UploadBitmaps(string uid, Score score, List<Page> pages) {
+			string localPathBase = $@"{StorageManager.AppPathUsers}\{uid}\{score.CombinedComposerTitle}\layers\";
+			string objectPathBase = $"layers/{uid}/{score.CombinedComposerTitle}/";
 			UploadObjectOptions options = new UploadObjectOptions();
 			foreach (Page page in pages) {
 				string localPath = $"{localPathBase}{page.Number}.bmp";
@@ -85,8 +85,8 @@ namespace scorepager_desktop.Classes {
 		}
 
 		public void DownloadBitmaps(string uid, Score score) {
-			string localPathBase = $@"{StorageManager.AppPathUsers}\{uid}\{score.Composer}{score.Title}\layers\";
-			string objectPath = $"layers/{uid}/{score.Composer}{score.Title}";
+			string localPathBase = $@"{StorageManager.AppPathUsers}\{uid}\{score.CombinedComposerTitle}\layers\";
+			string objectPath = $"layers/{uid}/{score.CombinedComposerTitle}";
 			var objects = storage.ListObjects(storageBucketName, objectPath);
 			foreach (var item in objects) {
 				string localPath = $"{localPathBase}{item.Name.Substring(item.Name.LastIndexOf('/') + 1)}";

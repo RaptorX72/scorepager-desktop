@@ -27,7 +27,7 @@ namespace scorepager_desktop.Forms {
 			this.emailTextBox = new System.Windows.Forms.TextBox();
 			this.passWordMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
 			this.loginButton = new System.Windows.Forms.Button();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+			this.linkLabelRegister = new System.Windows.Forms.LinkLabel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -60,15 +60,16 @@ namespace scorepager_desktop.Forms {
 			this.loginButton.UseVisualStyleBackColor = true;
 			this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
 			// 
-			// linkLabel1
+			// linkLabelRegister
 			// 
-			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Location = new System.Drawing.Point(101, 232);
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new System.Drawing.Size(111, 13);
-			this.linkLabel1.TabIndex = 3;
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.Text = "Register new account";
+			this.linkLabelRegister.AutoSize = true;
+			this.linkLabelRegister.Location = new System.Drawing.Point(101, 232);
+			this.linkLabelRegister.Name = "linkLabelRegister";
+			this.linkLabelRegister.Size = new System.Drawing.Size(111, 13);
+			this.linkLabelRegister.TabIndex = 3;
+			this.linkLabelRegister.TabStop = true;
+			this.linkLabelRegister.Text = "Register new account";
+			this.linkLabelRegister.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelRegister_LinkClicked);
 			// 
 			// label1
 			// 
@@ -104,7 +105,7 @@ namespace scorepager_desktop.Forms {
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.linkLabel1);
+			this.Controls.Add(this.linkLabelRegister);
 			this.Controls.Add(this.loginButton);
 			this.Controls.Add(this.passWordMaskedTextBox);
 			this.Controls.Add(this.emailTextBox);
@@ -123,7 +124,7 @@ namespace scorepager_desktop.Forms {
 		private System.Windows.Forms.TextBox emailTextBox;
 		private System.Windows.Forms.MaskedTextBox passWordMaskedTextBox;
 		private System.Windows.Forms.Button loginButton;
-		private System.Windows.Forms.LinkLabel linkLabel1;
+		private System.Windows.Forms.LinkLabel linkLabelRegister;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.PictureBox pictureBox1;

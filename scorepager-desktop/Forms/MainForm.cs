@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 using scorepager_desktop.Structures;
 using scorepager_desktop.Classes;
 using scorepager_desktop.UserControls;
 
 namespace scorepager_desktop.Forms {
 	public partial class MainForm : Form {
+		#region Variables
 		private FirebaseClient client;
 
 		private PDFFile file;
@@ -33,7 +34,6 @@ namespace scorepager_desktop.Forms {
 		private bool isTyping = false;
 		private bool discardChanges = false;
 
-		#region UserControls
 		List<MasterUserControl> userControls = new List<MasterUserControl>() {
 			new SymbolSelector(),
 			new TextSelector()
@@ -59,7 +59,7 @@ namespace scorepager_desktop.Forms {
 
 			SetCurrentPageAndLayer(1);
 		}
-
+		#region Functions
 		private void SetCurrentPageAndLayer(int pageNumber) {
 			if (bm != null) currentPage.SetUserLayer(bm);
 			currentPage = file.GetPageByPageNumber(pageNumber);
@@ -77,11 +77,40 @@ namespace scorepager_desktop.Forms {
 				canvasPictureBox.Image = bm;
 			}
 			graphics.CompositingMode = CompositingMode.SourceOver;
-			UpdatePageCounterLabel();
+			labelPageCount.Text = $"{currentPageNumber} / {file.PageCount}";
 		}
 
-		private void UpdatePageCounterLabel() {
-			labelPageCount.Text = $"{currentPageNumber} / {file.PageCount}";
+		private void LoadUCToToolbarPanel() {
+			userControls.ForEach(control => control.SetActive(false));
+			toolBarPanel.Controls.Clear();
+			int index = -1;
+			switch (drawType) {
+				case DrawType.PEN:
+					break;
+				case DrawType.HIGHLIGHTER:
+					break;
+				case DrawType.TEXT:
+					index = 1;
+					break;
+				case DrawType.SYMBOL:
+					index = 0;
+					break;
+				case DrawType.ERASER:
+					break;
+			}
+			if (index == -1) return;
+			userControls[index].SetActive(true);
+			userControls[index].ResizeControl(toolBarPanel.Size);
+			toolBarPanel.Controls.Add(userControls[index]);
+		}
+
+		private void SetGlobalColor() {
+			if (drawType == DrawType.HIGHLIGHTER) color = Color.FromArgb(opacityTrackBar.Value, color);
+			else color = Color.FromArgb(255, color);
+			colorPreviewPanel.BackColor = color;
+			solidBrush.Color = color;
+			pen.Brush = solidBrush;
+			pen.Width = Convert.ToInt32(widthNumericUpDown.Value);
 		}
 
 		private void MergeImages(Bitmap background, Bitmap foreground) {
@@ -97,6 +126,37 @@ namespace scorepager_desktop.Forms {
 			canvasPictureBox.Image = background;
 		}
 
+		private void SetBufferImage(Image image) {
+			bufferImage = new Bitmap(image);
+		}
+
+		private Bitmap RecolorBitmap(Bitmap img, Color color) {
+			for (int i = 0; i < img.Width; i++)
+				for (int j = 0; j < img.Height; j++)
+					if (img.GetPixel(i, j).A != 0)
+						img.SetPixel(i, j, color);
+			return img;
+		}
+
+		private void DrawStringToCanvas(string text) {
+			graphics.Clear(Color.Transparent);
+			graphics.DrawImage(bufferImage, 0, 0);
+			graphics.DrawString(text, new Font(new FontFamily(((TextSelector)userControls[1]).SelectedFont), (int)widthNumericUpDown.Value), solidBrush, textPoint);
+			canvasPictureBox.Refresh();
+		}
+
+		private void InsertStringToCanvas(string text) {
+			DrawStringToCanvas(text);
+			textBoxCanvasText.Text = "";
+			currentPage.PageEdited = true;
+		}
+		#endregion
+
+		#region ControlEvents
+		private void toolBarPanel_Resize(object sender, EventArgs e) {
+			userControls.ForEach(control => { if (control.IsActive) control.ResizeControl(toolBarPanel.Size); });
+		}
+
 		private void canvasPictureBox_MouseDown(object sender, MouseEventArgs e) {
 			if (drawType == DrawType.TEXT) {
 				if (textBoxCanvasText.Focused) {
@@ -104,7 +164,6 @@ namespace scorepager_desktop.Forms {
 					InsertStringToCanvas(textBoxCanvasText.Text);
 					SetBufferImage(canvasPictureBox.Image);
 					isTyping = true;
-					currentPage.PageEdited = true;
 				} else {
 					textBoxCanvasText.Focus();
 					isTyping = true;
@@ -112,14 +171,15 @@ namespace scorepager_desktop.Forms {
 				textPoint = e.Location;
 			} else if (drawType == DrawType.SYMBOL) {
 				Image img = null;
+				int imageSize = (int)widthNumericUpDown.Value;
 				switch (((SymbolSelector)userControls[0]).Type) {
 					case SymbolType.NONE:
 						return;
 					case SymbolType.VIOLIN_KEY:
-						img = ResizeImage(Properties.Resources.icon_violin);
+						img = CommonTools.ResizeImage(Properties.Resources.icon_violin, imageSize, imageSize);
 						break;
 					case SymbolType.SHARP:
-						img = ResizeImage(Properties.Resources.icon_sharp);
+						img = CommonTools.ResizeImage(Properties.Resources.icon_sharp, imageSize, imageSize);
 						break;
 				}
 				graphics.DrawImage(
@@ -220,14 +280,6 @@ namespace scorepager_desktop.Forms {
 			SetGlobalColor();
 		}
 
-		private void SetGlobalColor() {
-			if (drawType == DrawType.HIGHLIGHTER) color = Color.FromArgb(opacityTrackBar.Value, color);
-			else color = Color.FromArgb(255, color);
-			colorPreviewPanel.BackColor = color;
-			solidBrush.Color = color;
-			pen.Brush = solidBrush;
-			pen.Width = Convert.ToInt32(widthNumericUpDown.Value);
-		}
 
 		private void widthNumericUpDown_ValueChanged(object sender, EventArgs e) {
 			pen.Width = Convert.ToInt32(widthNumericUpDown.Value);
@@ -240,18 +292,6 @@ namespace scorepager_desktop.Forms {
 				color = cd.Color;
 				SetGlobalColor();
 			}
-		}
-
-		private Image ResizeImage(Image imgToResize) {
-			return (Image) new Bitmap(imgToResize, new Size((int)widthNumericUpDown.Value, (int)widthNumericUpDown.Value));
-		}
-
-		private Bitmap RecolorBitmap(Bitmap img, Color color) {
-			for (int i = 0; i < img.Width; i++)
-				for (int j = 0; j < img.Height; j++)
-					if (img.GetPixel(i, j).A != 0)
-						img.SetPixel(i, j, color);
-			return img;
 		}
 
 		private void OnFocus(object sender = null, EventArgs e = null) {
@@ -267,22 +307,6 @@ namespace scorepager_desktop.Forms {
 			if (textBoxCanvasText.Focused && isTyping) DrawStringToCanvas(textBoxCanvasText.Text);
 		}
 
-		private void SetBufferImage(Image img) {
-			bufferImage = new Bitmap(img);
-		}
-
-		private void DrawStringToCanvas(string text) {
-			graphics.Clear(Color.Transparent);
-			graphics.DrawImage(bufferImage, 0, 0);
-			graphics.DrawString(text, new Font(new FontFamily(((TextSelector)userControls[1]).SelectedFont), (int)widthNumericUpDown.Value), solidBrush, textPoint);
-			canvasPictureBox.Refresh();
-		}
-
-		private void InsertStringToCanvas(string text) {
-			DrawStringToCanvas(text);
-			textBoxCanvasText.Text = "";
-		}
-
 		private void PreviousPageButton_Click(object sender, EventArgs e) {
 			if (currentPageNumber - 1 == 0) return;
 			SetCurrentPageAndLayer(--currentPageNumber);
@@ -293,34 +317,6 @@ namespace scorepager_desktop.Forms {
 			SetCurrentPageAndLayer(++currentPageNumber);
 		}
 
-		private void toolBarPanel_Resize(object sender, EventArgs e) {
-			userControls.ForEach(control => { if (control.IsActive) control.ResizeControl(toolBarPanel.Size); });
-		}
-
-		private void LoadUCToToolbarPanel() {
-			userControls.ForEach(control => control.SetActive(false));
-			toolBarPanel.Controls.Clear();
-			int index = -1;
-			switch (drawType) {
-				case DrawType.PEN:
-					break;
-				case DrawType.HIGHLIGHTER:
-					break;
-				case DrawType.TEXT:
-					index = 1;
-					break;
-				case DrawType.SYMBOL:
-					index = 0;
-					break;
-				case DrawType.ERASER:
-					break;
-			}
-			if (index == -1) return;
-			userControls[index].SetActive(true);
-			userControls[index].ResizeControl(toolBarPanel.Size);
-			toolBarPanel.Controls.Add(userControls[index]);
-		}
-
 		private void closeScoresToolStripMenuItem_Click(object sender, EventArgs e) {
 			SetCurrentPageAndLayer(currentPageNumber);
 			file.Save();
@@ -328,8 +324,25 @@ namespace scorepager_desktop.Forms {
 			MessageBox.Show("Changes saved!");
 		}
 
+		private void logOutToolStripMenuItem_Click(object sender, EventArgs e) {
+			client.Logout();
+			Close();
+		}
+
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
+			Environment.Exit(0);
+		}
+
+		private void discardScoreToolStripMenuItem_Click(object sender, EventArgs e) {
+			discardChanges = true;
+			Close();
+		}
+		#endregion
+
+		#region Form events
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
 			if (!client.LoggedIn || discardChanges) return;
+			if (textBoxCanvasText.Text != "") currentPage.PageEdited = true;
 			SetCurrentPageAndLayer(currentPageNumber);
 			bool unsavedChanges = currentPage.PageEdited;
 			if (!unsavedChanges) {
@@ -345,19 +358,6 @@ namespace scorepager_desktop.Forms {
 				if (res == DialogResult.No) e.Cancel = true;
 			}
 		}
-
-		private void logOutToolStripMenuItem_Click(object sender, EventArgs e) {
-			client.Logout();
-			this.Close();
-		}
-
-		private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
-			Environment.Exit(0);
-		}
-
-		private void discardScoreToolStripMenuItem_Click(object sender, EventArgs e) {
-			discardChanges = true;
-			this.Close();
-		}
+		#endregion
 	}
 }

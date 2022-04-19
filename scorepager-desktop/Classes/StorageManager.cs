@@ -16,8 +16,8 @@ namespace scorepager_desktop.Classes {
 
 		public static void Initialize() {
 			appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-			appPath = appDataPath + @"\ScorePager";
-			appPathUsers = appPath + @"\Users";
+			appPath = $@"{appDataPath}\ScorePager";
+			appPathUsers = $@"{appPath}\Users";
 			CreateStorage();
 		}
 
@@ -28,7 +28,7 @@ namespace scorepager_desktop.Classes {
 
 		public static List<Score> GetRentedScoresForUser(string uid) {
 			List<Score> scores = new List<Score>();
-			string path = appPathUsers + @"\" + uid;
+			string path = $@"{appPathUsers}\{uid}";
 			if (!Directory.Exists(path)) return new List<Score>();
 			foreach (string directory in Directory.GetDirectories(path)) {
 				string[] content = Directory.GetFiles(directory);
@@ -48,12 +48,12 @@ namespace scorepager_desktop.Classes {
 		}
 
 		public static Score DownloadScoreForUser(string uid, Score score) {
-			string path = appPathUsers + @"\" + uid;
-			string scorePath = path + @"\" + score.Composer + score.Title;
+			string path = $@"{AppPathUsers}\{uid}";
+			string scorePath = $@"{path}\{score.CombinedComposerTitle}";
 			if (!Directory.Exists(path)) Directory.CreateDirectory(path);
 			Directory.CreateDirectory(scorePath);
 			Directory.CreateDirectory(scorePath + LAYERS_NAME);
-			long rentDate = CommonTools.DateTimeToUnixTimstamp(DateTime.Now, 2592000);
+			long rentDate = CommonTools.DateTimeToUnixTimstamp(2592000);
 			using (StreamWriter sw = new StreamWriter(scorePath + SAVEFILE_NAME)) {
 				sw.WriteLine(score.Composer);
 				sw.WriteLine(score.Title);
@@ -68,19 +68,19 @@ namespace scorepager_desktop.Classes {
 
 		public static Bitmap GetLayerForScore(Score score, int pageNumber) {
 			string path = score.StorageFolder + LAYERS_NAME;
-			string layerPath = path + @"\" + pageNumber.ToString() + ".bmp";
+			string layerPath = $@"{path}\{pageNumber}.bmp";
 			if (!File.Exists(layerPath)) return null;
 			Bitmap image;
 			using (var temp = new Bitmap(layerPath)) {
 				image = new Bitmap(temp);
 			}
-			return (Bitmap)image;
+			return image;
 		}
 
 		public static void SaveLayerForScore(Score score, int pageNumber, Bitmap image) {
 			if (image == null) return;
 			string path = score.StorageFolder + LAYERS_NAME;
-			string layerPath = path + @"\" + pageNumber.ToString() + ".bmp";
+			string layerPath = $@"{path}\{pageNumber}.bmp";
 			if (File.Exists(layerPath)) File.Delete(layerPath);
 			image.Save(layerPath);
 		}

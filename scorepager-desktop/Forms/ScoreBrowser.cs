@@ -43,8 +43,7 @@ namespace scorepager_desktop.Forms {
 						break;
 					}
 				}
-				if (found) scores.Add(scoresLocal[i]);
-				else scores.Add(dbscore);
+				scores.Add(found ? scoresLocal[i] : dbscore);
 			});
 		}
 
@@ -54,12 +53,25 @@ namespace scorepager_desktop.Forms {
 			AvailableScoresListBox.SelectedIndex = 0;
 		}
 
-		private void resultTimer_Tick(object sender, EventArgs e) {
-			if (res != null && res.IsCompleted) {
-				resultTimer.Enabled = false;
-				AvailableScoresListBox.Enabled = true;
-				LoadLists();
+		private void buttonLoad_Click(object sender, EventArgs e) {
+			Score currentscore = scores[AvailableScoresListBox.SelectedIndex];
+			if (currentscore.Rented) {
+				PDFFile file = new PDFFile(currentscore);
+				using (MainForm mf = new MainForm(file)) {
+					Hide();
+					mf.ShowDialog();
+					if (client.LoggedIn) Show();
+					else Close();
+				}
+			} else {
+				scores[AvailableScoresListBox.SelectedIndex] = StorageManager.DownloadScoreForUser(client.UserID, currentscore);
+				FillListBox();
 			}
+		}
+
+		private void buttonLogout_Click(object sender, EventArgs e) {
+			client.Logout();
+			Close();
 		}
 
 		private void AvailableScoresListBox_SelectedIndexChanged(object sender, EventArgs e) {
@@ -71,24 +83,12 @@ namespace scorepager_desktop.Forms {
 			buttonLoad.Text = scores[index].Rented ? "Edit" : "Lease";
 		}
 
-		private void buttonLoad_Click(object sender, EventArgs e) {
-			Score currentscore = scores[AvailableScoresListBox.SelectedIndex];
-			if (currentscore.Rented) {
-				PDFFile file = new PDFFile(currentscore);
-				MainForm mf = new MainForm(file);
-				this.Hide();
-				mf.ShowDialog();
-				if (client.LoggedIn) this.Show();
-				else this.Close();
-			} else {
-				scores[AvailableScoresListBox.SelectedIndex] = StorageManager.DownloadScoreForUser(client.UserID, currentscore);
-				FillListBox();
+		private void resultTimer_Tick(object sender, EventArgs e) {
+			if (res != null && res.IsCompleted) {
+				resultTimer.Enabled = false;
+				AvailableScoresListBox.Enabled = true;
+				LoadLists();
 			}
-		}
-
-		private void buttonLogout_Click(object sender, EventArgs e) {
-			client.Logout();
-			this.Close();
 		}
 
 		private void ScoreBrowser_FormClosing(object sender, FormClosingEventArgs e) {
