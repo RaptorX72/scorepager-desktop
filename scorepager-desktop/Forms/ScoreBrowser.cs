@@ -78,7 +78,6 @@ namespace scorepager_desktop.Forms {
 				MainForm mf = new MainForm(file);
 				this.Hide();
 				mf.ShowDialog();
-				mf.Dispose();
 				if (client.LoggedIn) this.Show();
 				else this.Close();
 			} else {

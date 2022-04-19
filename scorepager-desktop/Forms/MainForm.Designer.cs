@@ -91,7 +91,7 @@ namespace scorepager_desktop.Forms {
 			this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.mainTableLayoutPanel.Size = new System.Drawing.Size(1064, 567);
+			this.mainTableLayoutPanel.Size = new System.Drawing.Size(1064, 587);
 			this.mainTableLayoutPanel.TabIndex = 0;
 			// 
 			// toolBarTableLayoutPanel
@@ -299,7 +299,7 @@ namespace scorepager_desktop.Forms {
 			this.mainControlTableLayoutPanel.Name = "mainControlTableLayoutPanel";
 			this.mainControlTableLayoutPanel.RowCount = 1;
 			this.mainControlTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.mainControlTableLayoutPanel.Size = new System.Drawing.Size(1064, 503);
+			this.mainControlTableLayoutPanel.Size = new System.Drawing.Size(1064, 507);
 			this.mainControlTableLayoutPanel.TabIndex = 1;
 			// 
 			// tableLayoutPanel4
@@ -316,7 +316,7 @@ namespace scorepager_desktop.Forms {
 			this.tableLayoutPanel4.RowCount = 2;
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel4.Size = new System.Drawing.Size(150, 503);
+			this.tableLayoutPanel4.Size = new System.Drawing.Size(150, 507);
 			this.tableLayoutPanel4.TabIndex = 0;
 			// 
 			// tableLayoutPanel5
@@ -354,9 +354,9 @@ namespace scorepager_desktop.Forms {
 			// nextPageButton
 			// 
 			this.nextPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.nextPageButton.Location = new System.Drawing.Point(101, 3);
+			this.nextPageButton.Location = new System.Drawing.Point(103, 3);
 			this.nextPageButton.Name = "nextPageButton";
-			this.nextPageButton.Size = new System.Drawing.Size(46, 44);
+			this.nextPageButton.Size = new System.Drawing.Size(44, 44);
 			this.nextPageButton.TabIndex = 2;
 			this.nextPageButton.Text = ">";
 			this.nextPageButton.UseVisualStyleBackColor = true;
@@ -367,7 +367,7 @@ namespace scorepager_desktop.Forms {
 			this.PreviousPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PreviousPageButton.Location = new System.Drawing.Point(3, 3);
 			this.PreviousPageButton.Name = "PreviousPageButton";
-			this.PreviousPageButton.Size = new System.Drawing.Size(43, 44);
+			this.PreviousPageButton.Size = new System.Drawing.Size(44, 44);
 			this.PreviousPageButton.TabIndex = 0;
 			this.PreviousPageButton.Text = "<";
 			this.PreviousPageButton.UseVisualStyleBackColor = true;
@@ -421,13 +421,13 @@ namespace scorepager_desktop.Forms {
 			this.tableLayoutPanel7.Name = "tableLayoutPanel7";
 			this.tableLayoutPanel7.RowCount = 1;
 			this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tableLayoutPanel7.Size = new System.Drawing.Size(908, 497);
+			this.tableLayoutPanel7.Size = new System.Drawing.Size(908, 501);
 			this.tableLayoutPanel7.TabIndex = 1;
 			// 
 			// canvasPictureBox
 			// 
 			this.canvasPictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.canvasPictureBox.Location = new System.Drawing.Point(404, 223);
+			this.canvasPictureBox.Location = new System.Drawing.Point(404, 225);
 			this.canvasPictureBox.Name = "canvasPictureBox";
 			this.canvasPictureBox.Size = new System.Drawing.Size(100, 50);
 			this.canvasPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -514,7 +514,7 @@ namespace scorepager_desktop.Forms {
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1064, 591);
+			this.ClientSize = new System.Drawing.Size(1064, 611);
 			this.Controls.Add(this.mainTableLayoutPanel);
 			this.Controls.Add(this.mainFormMenuStrip);
 			this.Name = "MainForm";
