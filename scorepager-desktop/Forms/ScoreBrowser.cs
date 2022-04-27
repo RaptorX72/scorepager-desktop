@@ -10,7 +10,8 @@ namespace scorepager_desktop.Forms {
 		private List<Score> scoresDB = new List<Score>();
 		private List<Score> scoresLocal = new List<Score>();
 		private FirebaseClient client;
-		Task<List<Score>> res;
+		private Task<List<Score>> res;
+		private int countDown = 30;
 
 		public ScoreBrowser() {
 			InitializeComponent();
@@ -20,8 +21,8 @@ namespace scorepager_desktop.Forms {
 
 		private void Setup() {
 			res = client.GetScores();
-			AvailableScoresListBox.Enabled = false;
 			resultTimer.Enabled = true;
+			buttonLoad.Enabled = false;
 		}
 
 		private void LoadLists() {
@@ -33,6 +34,10 @@ namespace scorepager_desktop.Forms {
 
 		private void CombineLists() {
 			scores.Clear();
+			if (scoresDB == null || !res.IsCompleted) {
+				scoresLocal.ForEach(item => { scores.Add(item); });
+				return;
+			}
 			scoresDB.ForEach(dbscore => {
 				bool found = false;
 				int i;
@@ -49,14 +54,21 @@ namespace scorepager_desktop.Forms {
 
 		private void FillListBox() {
 			AvailableScoresListBox.Items.Clear();
+			if (scores.Count == 0) {
+				AvailableScoresListBox.Items.Add("Failed to load any scores!");
+				buttonLoad.Enabled = false;
+				return;
+			}
 			scores.ForEach(score => { AvailableScoresListBox.Items.Add(score.ToString()); });
 			AvailableScoresListBox.SelectedIndex = 0;
+			buttonLoad.Enabled = true;
 		}
 
 		private void buttonLoad_Click(object sender, EventArgs e) {
 			Score currentscore = scores[AvailableScoresListBox.SelectedIndex];
 			if (currentscore.Rented) {
 				PDFFile file = new PDFFile(currentscore);
+				//TODO: Handle file exception
 				using (MainForm mf = new MainForm(file)) {
 					Hide();
 					mf.ShowDialog();
@@ -64,6 +76,7 @@ namespace scorepager_desktop.Forms {
 					else Close();
 				}
 			} else {
+				//TODO: Handle score exception
 				scores[AvailableScoresListBox.SelectedIndex] = StorageManager.DownloadScoreForUser(client.UserID, currentscore);
 				FillListBox();
 			}
@@ -75,6 +88,7 @@ namespace scorepager_desktop.Forms {
 		}
 
 		private void AvailableScoresListBox_SelectedIndexChanged(object sender, EventArgs e) {
+			if (scores.Count == 0) return;
 			int index = AvailableScoresListBox.SelectedIndex;
 			labelComposer.Text = scores[index].Composer;
 			labelTitle.Text = scores[index].Title;
@@ -84,9 +98,14 @@ namespace scorepager_desktop.Forms {
 		}
 
 		private void resultTimer_Tick(object sender, EventArgs e) {
+			if (--countDown == 0) {
+				MessageBox.Show("Failed to load scores from database!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				resultTimer.Enabled = false;
+				LoadLists();
+				return;
+			}
 			if (res != null && res.IsCompleted) {
 				resultTimer.Enabled = false;
-				AvailableScoresListBox.Enabled = true;
 				LoadLists();
 			}
 		}
