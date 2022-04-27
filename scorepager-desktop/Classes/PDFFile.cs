@@ -9,13 +9,16 @@ namespace scorepager_desktop.Classes {
 		private Score score;
 		private List<Page> pages = new List<Page>();
 		private int pageCount = 0;
+		private bool isLoaded = false;
 
 		public int PageCount { get => pageCount; }
 
 		public List<Page> Pages { get => pages; }
+		public bool IsLoaded { get => isLoaded; set => isLoaded = value; }
 
 		public PDFFile(Score score) {
 			this.score = score;
+			if (!File.Exists(this.score.Url)) return;
 			using (FileStream fs = new FileStream(this.score.Url, FileMode.Open))
 			using (Document document = new Document(fs)) {
 				for (int i = 0; i < document.Pages.Count; i++) {
@@ -28,6 +31,7 @@ namespace scorepager_desktop.Classes {
 					pages.Add(page);
 				}
 			}
+			isLoaded = true;
 		}
 
 		public Page GetPageByPageNumber(int pageNumber) {

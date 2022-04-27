@@ -68,7 +68,7 @@ namespace scorepager_desktop.Forms {
 			Score currentscore = scores[AvailableScoresListBox.SelectedIndex];
 			if (currentscore.Rented) {
 				PDFFile file = new PDFFile(currentscore);
-				//TODO: Handle file exception
+				if (!file.IsLoaded) return;
 				using (MainForm mf = new MainForm(file)) {
 					Hide();
 					mf.ShowDialog();
@@ -76,7 +76,6 @@ namespace scorepager_desktop.Forms {
 					else Close();
 				}
 			} else {
-				//TODO: Handle score exception
 				scores[AvailableScoresListBox.SelectedIndex] = StorageManager.DownloadScoreForUser(client.UserID, currentscore);
 				FillListBox();
 			}

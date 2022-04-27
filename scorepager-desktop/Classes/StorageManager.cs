@@ -34,15 +34,21 @@ namespace scorepager_desktop.Classes {
 				string[] content = Directory.GetFiles(directory);
 				string composer = "", title = "", url = "";
 				long timestamp = 0;
+				int elementsLoaded = 0;
 				foreach (string item in content) {
 					if (item.EndsWith(SAVEFILE_NAME)) {
 						string[] info = File.ReadAllLines(item);
+						if (info.Length < 3) continue;
 						composer = info[0];
 						title = info[1];
-						timestamp = long.Parse(info[2]);
-					} else if (item.EndsWith(PDF_NAME)) url = item;
+						if (!long.TryParse(info[2], out timestamp)) continue;
+						elementsLoaded++;
+					} else if (item.EndsWith(PDF_NAME)) {
+						url = item;
+						elementsLoaded++;
+					}
 				}
-				scores.Add(new Score(composer, title, directory, url, true, timestamp));
+				if (elementsLoaded == 2) scores.Add(new Score(composer, title, directory, url, true, timestamp));
 			}
 			return scores;
 		}
